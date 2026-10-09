@@ -5,6 +5,7 @@ import re
 from pathlib import Path
 
 from .models import FieldRule
+from .paths import app_dir, bundle_dir, is_frozen
 
 SHEET_MAP = {
     "Bang Check-in": "CHECKIN",
@@ -206,31 +207,80 @@ def schema_from_jsonable(data: dict) -> dict[str, list[FieldRule]]:
     return out
 
 
+def _inside(path: Path, root: Path) -> bool:
+    try:
+        path.resolve().relative_to(root.resolve())
+        return True
+    except ValueError:
+        return False
+
+
+def writable_schema_path() -> Path:
+    """File rule người dùng sửa được (cạnh exe, hoặc rules/ trong source)."""
+    return app_dir() / "rules" / "schema_3176.json"
+
+
+def load_editable_schema() -> dict[str, list[FieldRule]]:
+    path = writable_schema_path()
+    if path.exists():
+        return schema_from_jsonable(json.loads(path.read_text(encoding="utf-8")))
+    return load_or_build_schema()
+
+
+def save_editable_schema(schema: dict[str, list[FieldRule]]) -> Path:
+    path = writable_schema_path()
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(
+        json.dumps(schema_to_jsonable(schema), ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+    return path
+
+
 def load_or_build_schema(
     excel_path: Path | str | None = None,
     cache_path: Path | str | None = None,
     force_rebuild: bool = False,
 ) -> dict[str, list[FieldRule]]:
-    base = Path(__file__).resolve().parent.parent
-    cache = Path(cache_path) if cache_path else base / "rules" / "schema_3176.json"
-    excel = (
-        Path(excel_path)
-        if excel_path
-        else base / "Validate CTN QĐ 3176_20250906.xlsx"
-    )
+    bundled = bundle_dir()
+    writable = app_dir()
+    bundled_cache = bundled / "rules" / "schema_3176.json"
+    writable_cache = writable / "rules" / "schema_3176.json"
+    if not cache_path and writable_cache.exists() and not force_rebuild:
+        return schema_from_jsonable(json.loads(writable_cache.read_text(encoding="utf-8")))
+    if cache_path:
+        cache = Path(cache_path)
+    elif bundled_cache.exists():
+        cache = bundled_cache
+    else:
+        cache = writable_cache
+
+    excel_name = "Validate CTN QĐ 3176_20250906.xlsx"
+    if excel_path:
+        excel = Path(excel_path)
+    elif (writable / excel_name).exists():
+        excel = writable / excel_name
+    else:
+        excel = bundled / excel_name
 
     if cache.exists() and not force_rebuild:
         if not excel.exists() or cache.stat().st_mtime >= excel.stat().st_mtime:
             return schema_from_jsonable(json.loads(cache.read_text(encoding="utf-8")))
 
     if not excel.exists():
-        if cache.exists():
-            return schema_from_jsonable(json.loads(cache.read_text(encoding="utf-8")))
+        for fallback in (cache, bundled_cache, writable_cache):
+            if fallback.exists():
+                return schema_from_jsonable(
+                    json.loads(fallback.read_text(encoding="utf-8"))
+                )
         raise FileNotFoundError(f"Không tìm thấy Excel rule: {excel}")
 
     schema = load_rules_from_excel(excel)
-    cache.parent.mkdir(parents=True, exist_ok=True)
-    cache.write_text(
+    out_cache = cache
+    if is_frozen() and _inside(out_cache, bundled):
+        out_cache = writable_cache
+    out_cache.parent.mkdir(parents=True, exist_ok=True)
+    out_cache.write_text(
         json.dumps(schema_to_jsonable(schema), ensure_ascii=False, indent=2),
         encoding="utf-8",
     )

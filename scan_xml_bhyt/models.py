@@ -23,9 +23,12 @@ class ValidationIssue:
     code: str
     message: str
     value: str = ""
+    hoso_index: int = 0
+    ma_lk: str = ""
 
     def to_row(self) -> dict[str, Any]:
         return {
+            "ma_lk": self.ma_lk,
             "file": self.file,
             "severity": self.severity,
             "loai_hoso": self.loai_hoso,

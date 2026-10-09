@@ -38,6 +38,7 @@ class DecodedFile:
     records: list[dict[str, str]]
     raw_xml: str = ""
     item_tag: str = ""  # ví dụ CHI_TIET_THUOC
+    hoso_index: int = 1
 
 
 @dataclass
@@ -180,7 +181,7 @@ def parse_file(path: Path | str) -> ParsedHoSo:
         hoso_list = [root]
 
     seen_filehoso: set[int] = set()
-    for hoso in hoso_list:
+    for hoso_index, hoso in enumerate(hoso_list, start=1):
         for fh in _find_filehoso(hoso):
             fid = id(fh)
             if fid in seen_filehoso:
@@ -213,6 +214,7 @@ def parse_file(path: Path | str) -> ParsedHoSo:
                     records=records,
                     raw_xml=xml_text,
                     item_tag=item_tag,
+                    hoso_index=hoso_index,
                 )
             )
 

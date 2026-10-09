@@ -217,7 +217,15 @@ def dedupe_issues(issues: list[ValidationIssue]) -> list[ValidationIssue]:
     seen: set[tuple] = set()
     out: list[ValidationIssue] = []
     for i in issues:
-        key = (i.file, i.loai_hoso, i.record_index, i.field, i.code, i.message)
+        key = (
+            i.file,
+            i.hoso_index,
+            i.loai_hoso,
+            i.record_index,
+            i.field,
+            i.code,
+            i.message,
+        )
         if key in seen:
             continue
         seen.add(key)

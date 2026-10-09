@@ -7,6 +7,7 @@ from pathlib import Path
 
 from .export_xml import export_pre_base64
 from .parser import collect_xml_paths
+from .patients import build_patients
 from .report import (
     default_report_stem,
     summarize,
@@ -125,6 +126,7 @@ def main(argv: list[str] | None = None) -> int:
     print(f"Đang quét {len(paths)} file XML (schema: {len(schema)} bảng)...")
 
     all_issues = []
+    patients = []
     files_with_errors: set[Path] = set()
     ok_count = 0
     dump_pre = not args.no_pre_base64 and bool(str(args.pre_base64 or "").strip())
@@ -133,6 +135,7 @@ def main(argv: list[str] | None = None) -> int:
 
     for path in paths:
         hoso, issues = validate_path(path, schema)
+        patients.extend(build_patients(hoso, issues))
         if pre_dir is not None:
             dest = export_pre_base64(hoso, out_dir=pre_dir)
             dumped += 1
@@ -169,6 +172,7 @@ def main(argv: list[str] | None = None) -> int:
         xlsx_path,
         scanned_files=len(paths),
         ok_files=ok_count,
+        patients=patients,
     )
     if args.csv:
         write_csv(all_issues, out_dir / f"{stem}.csv")

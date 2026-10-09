@@ -7,8 +7,10 @@ from datetime import datetime
 from pathlib import Path
 
 from .models import ValidationIssue
+from .patients import PatientView
 
 HEADERS_VI = [
+    ("ma_lk", "Mã LK"),
     ("file", "File"),
     ("severity", "Mức độ"),
     ("loai_hoso", "Loại hồ sơ"),
@@ -30,33 +32,100 @@ def write_csv(issues: list[ValidationIssue], path: Path) -> None:
             writer.writerow(issue.to_row())
 
 
+PATIENT_HEADERS = [
+    "Mã BN",
+    "Họ tên",
+    "Ngày sinh",
+    "Giới tính",
+    "CCCD",
+    "Mã thẻ BHYT",
+    "Mã LK",
+    "Ngày vào",
+    "Ngày ra",
+    "Mã bệnh",
+    "Chẩn đoán",
+    "Số lỗi",
+    "Số cảnh báo",
+    "Kết quả",
+    "Tóm tắt lỗi",
+    "File",
+]
+
+
+def _write_patient_sheet(wb, patients: list[PatientView], header_font, header_fill, err_fill, warn_fill) -> None:
+    from openpyxl.styles import Alignment
+    from openpyxl.utils import get_column_letter
+
+    ws = wb.active
+    ws.title = "Benh_nhan"
+    for col, title in enumerate(PATIENT_HEADERS, start=1):
+        cell = ws.cell(1, col, title)
+        cell.font = header_font
+        cell.fill = header_fill
+        cell.alignment = Alignment(horizontal="center", wrap_text=True)
+
+    for row, patient in enumerate(patients, start=2):
+        values = [
+            patient.ma_bn,
+            patient.ho_ten,
+            patient.ngay_sinh,
+            patient.gioi_tinh,
+            patient.so_cccd,
+            patient.ma_the,
+            patient.ma_lk,
+            patient.ngay_vao,
+            patient.ngay_ra,
+            patient.ma_benh,
+            patient.chan_doan,
+            patient.error_count,
+            patient.warning_count,
+            patient.status,
+            patient.error_summary(),
+            Path(patient.file).name,
+        ]
+        fill = err_fill if patient.error_count else warn_fill if patient.warning_count else None
+        for col, value in enumerate(values, start=1):
+            cell = ws.cell(row, col, value)
+            cell.alignment = Alignment(wrap_text=True, vertical="top")
+            if fill is not None:
+                cell.fill = fill
+
+    widths = [16, 28, 14, 12, 16, 20, 16, 18, 18, 12, 36, 10, 14, 12, 70, 42]
+    for index, width in enumerate(widths, start=1):
+        ws.column_dimensions[get_column_letter(index)].width = width
+    last = max(1, len(patients) + 1)
+    ws.auto_filter.ref = f"A1:P{last}"
+    ws.freeze_panes = "A2"
+
+
 def write_excel(
     issues: list[ValidationIssue],
     path: Path,
     *,
     scanned_files: int | None = None,
     ok_files: int | None = None,
+    patients: list[PatientView] | None = None,
 ) -> None:
-    """Xuất báo cáo Excel: sheet Tong_hop + sheet Chi_tiet."""
+    """Xuất báo cáo Excel: sheet Benh_nhan + Tong_hop + Chi_tiet."""
     from openpyxl import Workbook
     from openpyxl.styles import Alignment, Font, PatternFill
     from openpyxl.utils import get_column_letter
 
     path.parent.mkdir(parents=True, exist_ok=True)
-    wb = Workbook()
-
-    # --- Sheet tổng hợp ---
-    ws_sum = wb.active
-    ws_sum.title = "Tong_hop"
-    by_sev = Counter(i.severity for i in issues)
-    by_file_err = Counter(Path(i.file).name for i in issues if i.severity == "error")
-    by_file_warn = Counter(Path(i.file).name for i in issues if i.severity == "warning")
-    by_code = Counter(i.code for i in issues if i.severity == "error")
-
     header_font = Font(bold=True, color="FFFFFF")
     header_fill = PatternFill("solid", fgColor="1F4E79")
     err_fill = PatternFill("solid", fgColor="FCE4EC")
     warn_fill = PatternFill("solid", fgColor="FFF8E1")
+
+    wb = Workbook()
+    _write_patient_sheet(wb, patients or [], header_font, header_fill, err_fill, warn_fill)
+
+    # --- Sheet tổng hợp ---
+    ws_sum = wb.create_sheet("Tong_hop")
+    by_sev = Counter(i.severity for i in issues)
+    by_file_err = Counter(Path(i.file).name for i in issues if i.severity == "error")
+    by_file_warn = Counter(Path(i.file).name for i in issues if i.severity == "warning")
+    by_code = Counter(i.code for i in issues if i.severity == "error")
 
     ws_sum["A1"] = "Báo cáo quét lỗi XML BHYT (QĐ 3176)"
     ws_sum["A1"].font = Font(bold=True, size=14)
@@ -128,11 +197,14 @@ def write_excel(
             elif issue.severity == "warning":
                 cell.fill = warn_fill
 
-    widths = [40, 12, 12, 10, 18, 18, 60, 30]
+    widths = [18, 40, 12, 12, 10, 18, 18, 60, 30]
     for i, width in enumerate(widths, start=1):
         ws.column_dimensions[get_column_letter(i)].width = width
-    ws.auto_filter.ref = f"A1:H{max(1, len(issues) + 1)}"
+    last_col = get_column_letter(len(HEADERS_VI))
+    ws.auto_filter.ref = f"A1:{last_col}{max(1, len(issues) + 1)}"
     ws.freeze_panes = "A2"
+    wb.move_sheet(ws, offset=-wb.sheetnames.index("Chi_tiet"))
+    wb.active = ws
 
     wb.save(path)
 

@@ -30,6 +30,7 @@ def validate_hoso(
         )
 
     for decoded in hoso.files:
+        before = len(issues)
         loai = decoded.loai_hoso
         rules = schema.get(loai)
         if not rules:
@@ -45,9 +46,7 @@ def validate_hoso(
                         message=f"Không có schema cho {loai}",
                     )
                 )
-            continue
-
-        if not decoded.records:
+        elif not decoded.records:
             issues.append(
                 ValidationIssue(
                     file=file,
@@ -59,30 +58,31 @@ def validate_hoso(
                     message=f"{loai}: không trích được bản ghi chỉ tiêu",
                 )
             )
-            continue
-
-        item_tag = decoded.item_tag or ""
-        for idx, record in enumerate(decoded.records, start=1):
-            for rule in rules:
-                # Bỏ qua field không có rule bắt buộc trong schema
-                if not (rule.required or "").strip():
-                    continue
-                value = record.get(rule.code, "")
-                if value is None:
-                    value = ""
-                issues.extend(
-                    check_required_smart(
-                        file=file,
-                        loai=loai,
-                        record_index=idx,
-                        field_code=rule.code,
-                        required=rule.required,
-                        record=record,
-                        value=value,
-                        notes=rule.notes,
-                        item_tag=item_tag,
+        else:
+            item_tag = decoded.item_tag or ""
+            for idx, record in enumerate(decoded.records, start=1):
+                for rule in rules:
+                    # Bỏ qua field không có rule bắt buộc trong schema
+                    if not (rule.required or "").strip():
+                        continue
+                    value = record.get(rule.code, "")
+                    if value is None:
+                        value = ""
+                    issues.extend(
+                        check_required_smart(
+                            file=file,
+                            loai=loai,
+                            record_index=idx,
+                            field_code=rule.code,
+                            required=rule.required,
+                            record=record,
+                            value=value,
+                            notes=rule.notes,
+                            item_tag=item_tag,
+                        )
                     )
-                )
+        for issue in issues[before:]:
+            issue.hoso_index = decoded.hoso_index
 
     return dedupe_issues(issues)
 

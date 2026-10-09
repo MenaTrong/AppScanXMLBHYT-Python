@@ -1,0 +1,3782 @@
+{
+  "CHECKIN": [
+    {
+      "code": "MA_LK",
+      "type": "Chuỗi",
+      "maxlen": 100,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "STT",
+      "type": "Số",
+      "maxlen": 10,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "MA_BN",
+      "type": "Chuỗi",
+      "maxlen": 100,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "HO_TEN",
+      "type": "Chuỗi",
+      "maxlen": 255,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "SO_CCCD",
+      "type": "Chuỗi",
+      "maxlen": 15,
+      "required": "",
+      "notes": [
+        "- Định dạng 9,12 ký tự số \n- 8 ký tự bắt đầu là chữ in hoa và 7 ký tự số ở sau\n- 9 ký tự bắt đầu là 1 chữ in hoa là 8 ký tự số ở sau\n- 9 ký tự bắt đầu là 2 chữ in hoa là 7 ký tự số ở sau",
+        "Sửa đổi toàn bộ nội dung diễn giải:\n- Ghi số căn cước công dân hoặc số định danh cá nhân trên thẻ căn cước hoặc giấy chứng nhận căn cước hoặc giấy khai sinh của người bệnh. \n- Trường hợp người bệnh là người nước ngoài thì ghi số hộ chiếu.\n- Trường hợp bất khả kháng như trẻ sơ sinh hoặc người bệnh mất ý thức, tâm thần không thể lấy được thông tin số định danh cá nhân của người bệnh thì để trống.\n- Thay đổi kích thước tối đa n ký tự."
+      ]
+    },
+    {
+      "code": "NGAY_SINH",
+      "type": "Chuỗi",
+      "maxlen": 12,
+      "required": "x",
+      "notes": [
+        "- Đổi từ dạng số sang dạng chuỗi có kích thước là 12"
+      ]
+    },
+    {
+      "code": "GIOI_TINH",
+      "type": "Số",
+      "maxlen": 1,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "MA_THE_BHYT",
+      "type": "Chuỗi",
+      "maxlen": 15,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "MA_DKBD",
+      "type": "Chuỗi",
+      "maxlen": 5,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "GT_THE_TU",
+      "type": "Chuỗi",
+      "maxlen": 8,
+      "required": "",
+      "notes": [
+        "Đổi từ dạng số sang thành dạng chuỗi, kích thước 8"
+      ]
+    },
+    {
+      "code": "GT_THE_DEN",
+      "type": "Chuỗi",
+      "maxlen": 8,
+      "required": "",
+      "notes": [
+        "Đổi từ dạng số sang thành dạng chuỗi, kích thước 8"
+      ]
+    },
+    {
+      "code": "MA_DOITUONG_KCB",
+      "type": "Chuỗi",
+      "maxlen": 5,
+      "required": "x",
+      "notes": [
+        "Kích thước tối đa chuyển từ 5 xuống 4"
+      ]
+    },
+    {
+      "code": "NGAY_VAO",
+      "type": "Chuỗi",
+      "maxlen": 12,
+      "required": "x",
+      "notes": [
+        "Chuyển từ dạng số sang dạng chuỗi"
+      ]
+    },
+    {
+      "code": "NGAY_VAO_NOI_TRU",
+      "type": "Chuỗi",
+      "maxlen": 12,
+      "required": "",
+      "notes": [
+        "- Đổi từ sạng số thành dạng chuỗi, kích thước tối đa 12 ký tự\nGhi thời điểm người bệnh vào điều trị nội trú hoặc điều trị ban ngày, gồm 12 ký tự, theo định dạng yyyymmddHHMM."
+      ]
+    },
+    {
+      "code": "LY_DO_VNT",
+      "type": "Chuỗi",
+      "maxlen": 4000,
+      "required": "x (Chỉ bắt buộc khi NGAY_VAO_NOI_TRU not null)",
+      "notes": [
+        "Ghi lý do vào nội trú, áp dụng đối với trường hợp điều trị nội trú hoặc điều trị ban ngày (bao gồm cả triệu chứng lâm sàng hoặc các lý do khác khiến cho người bệnh đến cơ sở KBCB)."
+      ]
+    },
+    {
+      "code": "MA_LY_DO_VNT",
+      "type": "Chuỗi",
+      "maxlen": 10,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "MA_LOAI_KCB",
+      "type": "Chuỗi",
+      "maxlen": 2,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "MA_CSKCB",
+      "type": "Chuỗi",
+      "maxlen": 5,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "MA_DICH_VU",
+      "type": "Chuỗi",
+      "maxlen": 50,
+      "required": "Sửa lại chỉ bắt buộc khi MA_THUOC và MA_VAT_TU =  null",
+      "notes": [
+        "Sửa lại diễn giải: Ghi mã dịch vụ kỹ thuật hoặc mã dịch vụ khám bệnh thực hiện đối với người bệnh, theo quy định tại Bộ mã danh mục dùng chung (DMDC) do Bộ trưởng Bộ Y tế ban hành trong trường hợp phát sinh chi phí đầu tiên tại khoa điều trị nội trú hoặc khoa điều trị nội trú ban ngày hoặc khoa điều trị ngoại trú là dịch vụ kỹ thuật hoặc tiền khám bệnh."
+      ]
+    },
+    {
+      "code": "TEN_DICH_VU",
+      "type": "Chuỗi",
+      "maxlen": 1024,
+      "required": "Sửa lại chỉ bắt buộc khi MA_DICH_VU not null",
+      "notes": []
+    },
+    {
+      "code": "MA_THUOC",
+      "type": "Chuỗi",
+      "maxlen": 255,
+      "required": "Chỉ bắt buộc khi MA_DICH_VU và MA_VAT_TU = null",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi mã hoạt chất của thuốc theo quy định tại Bộ mã danh mục dùng chung do Bộ Y tế ban hành trong trường hợp phát sinh chi phí đầu tiên tại khoa điều trị nội trú hoặc khoa điều trị nội trú ban ngày hoặc khoa điều trị ngoại trú là thuốc.\nĐối với thuốc do cơ sở KBCB tự bào chế, pha chế: ghi mã thuốc gồm mã các hoạt chất/thành phần, cách nhau bằng dấu cộng \"+\". Các hoạt chất/thành phần của thuốc nằm ngoài danh mục thuốc thuộc phạm vi thanh toán của quỹ BHYT thì ghi mã hoạt chất/thành phần theo cấu trúc YYYY.SĐK, trong đó YYYY là năm cấp số đăng ký lưu hành nguyên liệu làm thuốc và SĐK là số đăng ký lưu hành nguyên liệu làm thuốc.\n- Thuốc thành phẩm không thuộc phạm vi chi trả của quỹ BHYT thì để trống trường này"
+      ]
+    },
+    {
+      "code": "TEN_THUOC",
+      "type": "Chuỗi",
+      "maxlen": 1024,
+      "required": "Sửa lại chỉ bắt buộc khi MA_THUOC not null",
+      "notes": [
+        "- Dạng chuỗi kích thước tối đa 1024 ký tự"
+      ]
+    },
+    {
+      "code": "MA_VAT_TU",
+      "type": "Chuỗi",
+      "maxlen": 255,
+      "required": "Chỉ bắt buộc khi MA_DICH_VU và MA_THUOC = null",
+      "notes": [
+        "Ghi mã vật tư y tế là mã nhóm VTYT quy định tại Thông tư số 04/2017/TT-BYT."
+      ]
+    },
+    {
+      "code": "TEN_VAT_TU",
+      "type": "Chuỗi",
+      "maxlen": null,
+      "required": "Sửa lại chỉ bắt buộc khi MA_VAT_TU not null",
+      "notes": [
+        "Ghi tên vật tư y tế là tên nhóm VTYT quy định tại Thông tư số 04/2017/TT-BYT."
+      ]
+    },
+    {
+      "code": "NGAY_YL",
+      "type": "Số",
+      "maxlen": 12,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "DU_PHONG",
+      "type": "Chuỗi",
+      "maxlen": 4000,
+      "required": "",
+      "notes": []
+    }
+  ],
+  "XML1": [
+    {
+      "code": "MA_LK",
+      "type": "Chuỗi",
+      "maxlen": 100,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "STT",
+      "type": "Số",
+      "maxlen": 10,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "MA_BN",
+      "type": "Chuỗi",
+      "maxlen": 100,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "HO_TEN",
+      "type": "Chuỗi",
+      "maxlen": 255,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "SO_CCCD",
+      "type": "Chuỗi",
+      "maxlen": 15,
+      "required": "",
+      "notes": [
+        "- Định dạng 9,12 ký tự số \n- 8 ký tự bắt đầu là chữ in hoa và 7 ký tự số ở sau\n- 9 ký tự bắt đầu là 1 chữ in hoa là 8 ký tự số ở sau\n- 9 ký tự bắt đầu là 2 chữ in hoa là 7 ký tự số ở sau",
+        "Sửa đổi toàn bộ nội dung diễn giải:\n- Ghi số căn cước công dân hoặc số định danh cá nhân trên thẻ căn cước hoặc giấy chứng nhận căn cước hoặc giấy khai sinh của người bệnh. \n- Trường hợp người bệnh là người nước ngoài thì ghi số hộ chiếu.\n- Trường hợp bất khả kháng như trẻ sơ sinh hoặc người bệnh mất ý thức, tâm thần không thể lấy được thông tin số định danh cá nhân của người bệnh thì để trống.\n- Thay đổi kích thước tối đa n ký tự."
+      ]
+    },
+    {
+      "code": "NGAY_SINH",
+      "type": "Chuỗi",
+      "maxlen": 12,
+      "required": "x",
+      "notes": [
+        "- Chuyển từ dạng số thành dạng chuỗi"
+      ]
+    },
+    {
+      "code": "GIOI_TINH",
+      "type": "Số",
+      "maxlen": 1,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "NHOM_MAU",
+      "type": "Chuỗi",
+      "maxlen": 5,
+      "required": "",
+      "notes": [
+        "-Chuyển kích thước tối đa về 5 ký tự"
+      ]
+    },
+    {
+      "code": "MA_QUOCTICH",
+      "type": "Chuỗi",
+      "maxlen": 3,
+      "required": "x",
+      "notes": [
+        "-Chuyển từ dạng số thành dạng chuỗi, kích thước tối đa là 3"
+      ]
+    },
+    {
+      "code": "MA_DANTOC",
+      "type": "Chuỗi",
+      "maxlen": 2,
+      "required": "x",
+      "notes": [
+        "- Chuyển từ sạng số thành dạng chuỗi"
+      ]
+    },
+    {
+      "code": "MA_NGHE_NGHIEP",
+      "type": "Chuỗi",
+      "maxlen": 5,
+      "required": "x",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi mã nghề nghiệp của người bệnh. Ghi mã nghề nghiệp theo quy định tại Quyết định số 34/2020/QĐ-TTg ngày 26/11/2020 của Thủ tướng Chính phủ (lấy đến mã cấp 2).\n- Lưu ý: \n+ Trường hợp người bệnh không có hoặc chưa có nghề nghiệp thì ghi mã 00; \n+ Trường hợp người bệnh ngoài độ tuổi lao động hoặc không có nghề nghiệp trong danh mục mã nghề nghiệp thì lấy theo danh mục được cập nhật trên Cổng tiếp nhận dữ liệu thuộc Hệ thống thông tin giám định BHYT của BHXH Việt Nam;\n+ Trường hợp người bệnh có nhiều nghề thì ghi mã nghề nghiệp chính hoặc nghề nghiệp hiện tại;\n- Chuyển từ 5 ký tự max còn 2 ký tự max"
+      ]
+    },
+    {
+      "code": "DIA_CHI",
+      "type": "Chuỗi",
+      "maxlen": 1024,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "MATINH_CU_TRU",
+      "type": "Chuỗi",
+      "maxlen": 3,
+      "required": "x",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nMã đơn vị hành chính cấp tỉnh nơi người bệnh đang cư trú (thường trú hoặc tạm trú). Ghi theo 02 ký tự cuối của mã đơn vị hành chính của tỉnh, thành phố trực thuộc Trung ương nơi người bệnh cư trú (Quy định tại Phụ lục 1 Thông tư số 07/2016/TT-BCA ngày 01/02/2016 của Bộ trưởng Bộ Công an)."
+      ]
+    },
+    {
+      "code": "MAHUYEN_CU_TRU",
+      "type": "Chuỗi",
+      "maxlen": 3,
+      "required": "",
+      "notes": [
+        "Bỏ bắt buộc nhập",
+        "Sửa đổi toàn bộ nội dung diễn giải:\nMã đơn vị hành chính cấp huyện nơi người bệnh đang cư trú (thường trú hoặc tạm trú). Ghi mã đơn vị hành chính cấp huyện theo Quyết định số 124/2004/QĐ-TTg ngày 08/7/2004 của Thủ tướng Chính phủ ban hành danh mục mã đơn vị hành chính, được cập nhật trên Cổng tiếp nhận dữ liệu thuộc Hệ thống thông tin giám định BHYT của BHXH Việt Nam."
+      ]
+    },
+    {
+      "code": "MAXA_CU_TRU",
+      "type": "Chuỗi",
+      "maxlen": 5,
+      "required": "",
+      "notes": [
+        "Bỏ bắt buộc nhập",
+        "Sửa đổi toàn bộ nội dung diễn giải:\nMã đơn vị hành chính cấp xã nơi người bệnh đang cư trú (thường trú hoặc tạm trú). Ghi mã đơn vị hành chính cấp xã theo Quyết định số 124/2004/QĐ-TTg ngày 08/7/2004 của Thủ tướng Chính phủ ban hành danh mục mã đơn vị hành chính, được cập nhật trên Cổng tiếp nhận dữ liệu thuộc Hệ thống thông tin giám định BHYT của BHXH Việt Nam. Trường hợp xã chưa có mã đơn vị hành chính thì để trống."
+      ]
+    },
+    {
+      "code": "DIEN_THOAI",
+      "type": "Chuỗi",
+      "maxlen": 15,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "MA_THE_BHYT",
+      "type": "Chuỗi",
+      "maxlen": null,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "MA_DKBD",
+      "type": "Chuỗi",
+      "maxlen": null,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "GT_THE_TU",
+      "type": "Chuỗi",
+      "maxlen": null,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "GT_THE_DEN",
+      "type": "Chuỗi",
+      "maxlen": null,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "NGAY_MIEN_CCT",
+      "type": "Chuỗi",
+      "maxlen": 12,
+      "required": "",
+      "notes": [
+        "- Chuyển từ dạng số về dạng chuỗi, tối đa 12 ký tự"
+      ]
+    },
+    {
+      "code": "LY_DO_VV",
+      "type": "Chuỗi",
+      "maxlen": null,
+      "required": "x",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi lý do người bệnh đến KBCB.\nBãi bỏ phần lưu ý."
+      ]
+    },
+    {
+      "code": "LY_DO_VNT",
+      "type": "Chuỗi",
+      "maxlen": null,
+      "required": "",
+      "notes": [
+        "Bắt buộc nếu MA_LOAI_KCB = 03",
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi lý do vào nội trú, áp dụng đối với trường hợp điều trị nội trú hoặc điều trị ban ngày (bao gồm cả triệu chứng lâm sàng hoặc các lý do khác khiến cho người bệnh đến cơ sở KBCB)."
+      ]
+    },
+    {
+      "code": "MA_LY_DO_VNT",
+      "type": "Chuỗi",
+      "maxlen": 5,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "CHAN_DOAN_VAO",
+      "type": "Chuỗi",
+      "maxlen": null,
+      "required": "x",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi chẩn đoán sơ bộ của cơ sở KBCB ở thời điểm tiếp nhận người bệnh (kể cả các chẩn đoán nghi ngờ, theo dõi, chẩn đoán phân biệt trong quá trình điều trị nhưng đã loại trừ khi ra viện)."
+      ]
+    },
+    {
+      "code": "CHAN_DOAN_RV",
+      "type": "Chuỗi",
+      "maxlen": null,
+      "required": "x",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi đầy đủ các chẩn đoán xác định bệnh chính, bệnh kèm theo trong quá trình điều trị, không bao gồm các chẩn đoán nghi ngờ, theo dõi, chẩn đoán phân biệt nhưng đã loại trừ trong quá trình điều trị.\nLưu ý: \nĐối với việc ghi chẩn đoán ra viện để phục vụ việc tạo lập giấy chứng nhận nghỉ việc hưởng bảo hiểm xã hội thì thực hiện theo hướng dẫn tại Thông tư số 18/2022/TT-BYT của Bộ Y tế, trong đó:\n- Nội dung chẩn đoán phải mô tả cụ thể về tình trạng sức khỏe hoặc ghi tên bệnh hoặc mã bệnh.\n- Trường hợp mắc bệnh cần chữa trị dài ngày thì ghi mã bệnh; trường hợp chưa có mã bệnh thì ghi đầy đủ tê"
+      ]
+    },
+    {
+      "code": "MA_BENH_CHINH",
+      "type": "Chuỗi",
+      "maxlen": 7,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "MA_BENH_KT",
+      "type": "Chuỗi",
+      "maxlen": 100,
+      "required": "",
+      "notes": [
+        "Chỉ cho tối đa 12 mã bệnh",
+        "Sửa đổi toàn bộ nội dung diễn giải:\n- Ghi mã các bệnh kèm theo hoặc mã của triệu chứng, hội chứng đã được xác định, phân cách bằng dấu chấm phẩy “;”. Không ghi mã các chẩn đoán nghi ngờ, theo dõi, chẩn đoán phân biệt trong quá trình điều trị nhưng đã loại trừ khi ra viện. \n- Mã bệnh ghi theo quy định của Bộ Y tế tại Quyết định số 4469/QĐ-BYT ngày 28 tháng 10 năm 2020 và các văn bản cập nhật, bổ sung. \n- Cơ sở KBCB ghi tối đa 12 mã bệnh kèm theo."
+      ]
+    },
+    {
+      "code": "MA_BENH_YHCT",
+      "type": "Chuỗi",
+      "maxlen": 150,
+      "required": "",
+      "notes": [
+        "- Chuyển ký tự max là 150\nSửa đổi toàn bộ nội dung diễn giải:\n- Ghi lần lượt mã của bệnh chính và mã của các bệnh kèm theo trong trường hợp sử dụng mã bệnh YHCT, phân cách bằng dấu chấm phẩy “;”.\n- Mã bệnh YHCT ghi theo quy định của Bộ Y tế tại Quyết định số 7603/QĐ-BYT ngày 25 tháng 12 năm 2018 và các văn bản cập nhật, bổ sung. \n- Cơ sở KBCB chỉ ghi tối đa 13 mã bệnh.\n- Điều chỉnh kích thước tối đa 150 ký tự.",
+        "Nằm trong list: Select MA from DM_BENHYHCT where hieuluc =1 và\nTối đa 13 mã bệnh các mã bệnh được phân cách bằng dấu chấm phẩy “;”"
+      ]
+    },
+    {
+      "code": "MA_PTTT_QT",
+      "type": "Chuỗi",
+      "maxlen": 125,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "MA_DOITUONG_KCB",
+      "type": "Chuỗi",
+      "maxlen": 4,
+      "required": "x",
+      "notes": [
+        "Với trường hợp MA_DOITUONG_KCB = 8 thì T_TONGCHI >0",
+        "-Chuyển số ký tự max là 4"
+      ]
+    },
+    {
+      "code": "MA_NOI_DI",
+      "type": "Chuỗi",
+      "maxlen": 5,
+      "required": "",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi mã cơ sở KBCB nơi chuyển người bệnh do cơ quan có thẩm quyền cấp. Ghi thông tin trường này trong trường hợp chuyển tuyến khám chữa bệnh/chuyển cơ cở KBCB hoặc người bệnh đến khám lại theo giấy hẹn tại khoản 6 Điều 6 Thông tư 30/2020/TT-BYT hoặc lĩnh thuốc tại TYT xã theo quy định tại điểm h khoản 1 Điều 14 Nghị định số 146/2018/NĐ-CP.\n- Ví dụ 1: Người bệnh chuyển tuyến từ BV A đến BV B, tại BV A ghi:\n+ MA_CSKCB: 05 ký tự mã CSKCB của BV A\n+ MA_NOI_DI: để trống\n+ MA_NOI_DEN: 05 ký tự mã CSKCB BV B"
+      ]
+    },
+    {
+      "code": "MA_NOI_DEN",
+      "type": "Chuỗi",
+      "maxlen": 5,
+      "required": "",
+      "notes": [
+        "Bắt buộc nếu MA_LOAI_RV = 2;5",
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi mã cơ sở KBCB nơi chuyển người bệnh đến do cơ quan có thẩm quyền cấp.\nLưu ý: \n- Người bệnh chuyển tuyến/chuyển cơ sở KCB từ BV A đến BV B và tiếp tục chuyển đến BV C, tại BV B ghi:\n+ MA_CSKCB: 05 ký tự mã CSKCB của BV B\n+ MA_NOI_DI: 05 ký tự mã CSKCB của BV A\n+ MA_NOI_DEN: 05 ký tự mã CSKCB BV C\n- Trường hợp người bệnh không chuyển tuyến/chuyển cơ sở KCB thì để trống trường thông tin này."
+      ]
+    },
+    {
+      "code": "MA_TAI_NAN",
+      "type": "Số",
+      "maxlen": 1,
+      "required": "",
+      "notes": [
+        "Chuyển thành dạng số, số ký tự max là 1"
+      ]
+    },
+    {
+      "code": "NGAY_VAO",
+      "type": "Chuỗi",
+      "maxlen": 12,
+      "required": "x",
+      "notes": [
+        "Chuyển từ số thành chuỗi, ký tự max là 12"
+      ]
+    },
+    {
+      "code": "NGAY_VAO_NOI_TRU",
+      "type": "Chuỗi",
+      "maxlen": 12,
+      "required": "",
+      "notes": [
+        "Chuyển từ sạng số thành dạng chuỗi, số ký tự max là 12\n'Sửa đổi toàn bộ nội dung diễn giải:\nGhi thời điểm người bệnh vào điều trị nội trú hoặc điều trị ban ngày, gồm 12 ký tự, theo định dạng yyyymmddHHMM."
+      ]
+    },
+    {
+      "code": "NGAY_RA",
+      "type": "Chuỗi",
+      "maxlen": 12,
+      "required": "x",
+      "notes": [
+        "-Chuyển đổi từ dạng số thành chuỗi, số ký tự max là 12\nSửa đổi toàn bộ nội dung diễn giải:\nGhi thời điểm người bệnh kết thúc lần khám bệnh hoặc đợt điều trị tại cơ sở KBCB, gồm 12 ký tự theo định dạng yyyymmddHHMM.\nLưu ý: \n- Trường hợp điều trị ngoại trú thì ghi thời điểm kết thúc việc khám, chỉ định điều trị.\nBãi bỏ phần lưu ý tại Quyết định số 130/QĐ-BYT."
+      ]
+    },
+    {
+      "code": "GIAY_CHUYEN_TUYEN",
+      "type": "Chuỗi",
+      "maxlen": 50,
+      "required": "",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi số giấy chuyển tuyến của cơ sở KBCB/Số giấy chuyển cơ sở KBCB nơi chuyển người bệnh đi (trong trường hợp người bệnh có giấy chuyển tuyến) hoặc số giấy hẹn khám lại (nếu có)."
+      ]
+    },
+    {
+      "code": "SO_NGAY_DTRI",
+      "type": "Số",
+      "maxlen": 3,
+      "required": "x",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nSố ngày điều trị = NGAY_RA - NGAY_VAO + 1\nTrường hợp người bệnh đến khám bệnh được hẹn vào điều trị nội trú thì số ngày điều trị không bao gồm thời gian hẹn người bệnh.\nLưu ý:\n- MA_LOAI_KCB = 02 hoặc 08: Ghi số ngày có thực hiện dịch vụ kỹ thuật trong đợt điều trị ngoại trú;\n- MA_LOAI_KCB = 05 hoặc 07: Ghi số ngày sử dụng thuốc dài nhất trong đợt điều trị ngoại trú bệnh mạn tính hoặc trong lần lĩnh thuốc theo hẹn;\n- MA_LOAI_KCB = 09: Ghi số 0"
+      ]
+    },
+    {
+      "code": "PP_DIEU_TRI",
+      "type": "Chuỗi",
+      "maxlen": null,
+      "required": "",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi phương pháp điều trị cho người bệnh như nội khoa, ngoại khoa, xạ trị, hoá trị hoặc xạ trị + nội khoa"
+      ]
+    },
+    {
+      "code": "KET_QUA_DTRI",
+      "type": "Số",
+      "maxlen": 1,
+      "required": "x",
+      "notes": [
+        "Sửa đổi, bổ sung một số nội dung:\n- Mã \"5\": Tử vong tại cơ sở KBCB"
+      ]
+    },
+    {
+      "code": "MA_LOAI_RV",
+      "type": "Số",
+      "maxlen": 1,
+      "required": "x",
+      "notes": [
+        "Sửa đổi, bổ sung một số nội dung:\n- Mã \"2\": Chuyển tuyến/Chuyển cơ sở KBCB theo yêu cầu chuyên môn;\n- Mã \"5\": Chuyển tuyến/Chuyển cơ sở KBCB theo yêu cầu người bệnh."
+      ]
+    },
+    {
+      "code": "GHI_CHU",
+      "type": "Chuỗi",
+      "maxlen": null,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "NGAY_TTOAN",
+      "type": "Chuỗi",
+      "maxlen": 12,
+      "required": "",
+      "notes": [
+        "- Chuyển từ dạng số thành dạng chuỗi, max 12 ký tự"
+      ]
+    },
+    {
+      "code": "T_THUOC",
+      "type": "Số",
+      "maxlen": 15,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "T_VTYT",
+      "type": "Số",
+      "maxlen": 15,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "T_TONGCHI_BV",
+      "type": "Số",
+      "maxlen": 15,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "T_TONGCHI_BH",
+      "type": "Số",
+      "maxlen": 15,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "T_BNTT",
+      "type": "Số",
+      "maxlen": 15,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "T_BNCCT",
+      "type": "Số",
+      "maxlen": 15,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "T_BHTT",
+      "type": "Số",
+      "maxlen": 15,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "T_NGUONKHAC",
+      "type": "Số",
+      "maxlen": 15,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "T_BHTT_GDV",
+      "type": "Số",
+      "maxlen": 15,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "NAM_QT",
+      "type": "Số",
+      "maxlen": 4,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "THANG_QT",
+      "type": "Số",
+      "maxlen": 2,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "MA_LOAI_KCB",
+      "type": "Chuỗi",
+      "maxlen": 2,
+      "required": "x",
+      "notes": [
+        "<= Tháng TT ( Lấy từ NGAY_TTOAN)"
+      ]
+    },
+    {
+      "code": "MA_KHOA",
+      "type": "Chuỗi",
+      "maxlen": 50,
+      "required": "x",
+      "notes": [
+        "Check cả 2 bảng Danh mục khoa và Danh mục Khoa, phòng, giường => Chỉ cần có khai báo ở 1 trong 2 bảng là hợp lệ"
+      ]
+    },
+    {
+      "code": "MA_CSKCB",
+      "type": "Chuỗi",
+      "maxlen": 5,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "MA_KHUVUC",
+      "type": "Chuỗi",
+      "maxlen": 2,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "CAN_NANG",
+      "type": "Chuỗi",
+      "maxlen": 6,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "CAN_NANG_CON",
+      "type": "Chuỗi",
+      "maxlen": 100,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "NAM_NAM_LIEN_TUC",
+      "type": "Chuỗi",
+      "maxlen": 8,
+      "required": "",
+      "notes": [
+        "- Chuyển từ dạng số thành dạng chuỗi, max 8 ký tự"
+      ]
+    },
+    {
+      "code": "NGAY_TAI_KHAM",
+      "type": "Chuỗi",
+      "maxlen": 50,
+      "required": "",
+      "notes": [
+        "Nếu có dữ liệu thì XML14 bắt buộc nhập"
+      ]
+    },
+    {
+      "code": "MA_HSBA",
+      "type": "Chuỗi",
+      "maxlen": 100,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "MA_TTDV",
+      "type": "Chuỗi",
+      "maxlen": 255,
+      "required": "",
+      "notes": [
+        "Bổ sung mã 4;5",
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi mã của người đứng đầu cơ sở KBCB hoặc người được người đứng đầu cơ sở KBCB ủy quyền được ký và đóng dấu của cơ sở KBCB đó (mã hoá theo số GPHN).\nTăng kích thước tối đa 255 ký tự.",
+        "Tăng kích thước trường trong DB lên 255 và ký tự tối đa code check là 255"
+      ]
+    },
+    {
+      "code": "DU_PHONG",
+      "type": "Chuỗi",
+      "maxlen": null,
+      "required": "",
+      "notes": [
+        "Sửa đổi, bổ sung một số nội dung:\nGhi thông tin chiều cao của người bệnh (đơn vị cm), bắt buộc trong trường hợp sử dụng chỉ số này để chẩn đoán, điều trị."
+      ]
+    }
+  ],
+  "XML2": [
+    {
+      "code": "MA_LK",
+      "type": "Chuỗi",
+      "maxlen": 100,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "STT",
+      "type": "Số",
+      "maxlen": 10,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "MA_THUOC",
+      "type": "Chuỗi",
+      "maxlen": 255,
+      "required": "x",
+      "notes": [
+        "Sửa đổi, bổ sung hướng dẫn:\n- Bãi bỏ nội dung hướng dẫn bổ sung tại Quyết định 4750/QĐ-BYT;\n- Đối với thuốc do cơ sở KBCB tự bào chế, pha chế: ghi mã thuốc gồm mã các hoạt chất/thành phần, cách nhau bằng dấu cộng \"+\". \nCác hoạt chất/thành phần của thuốc nằm ngoài danh mục thuốc thuộc phạm vi thanh toán của quỹ BHYT thì ghi mã hoạt chất/thành phần theo cấu trúc YYYY.SĐK, trong đó YYYY là năm cấp số đăng ký lưu hành nguyên liệu làm thuốc và SĐK là số đăng ký lưu hành nguyên liệu làm thuốc.\n- Trường hợp chế phẩm máu có sử dụng bộ dụng cụ gạn tách (kít tách tiểu cầu, bạch cầu...) thì ghi mã bộ dụng cụ gạn tách theo quy định tại Bộ mã danh mục dùng chung do Bộ Y tế ban hành vào trường MA_VAT_TU tại Bảng 3. Trường hợp mua máu từ đơn vị khác, sau mã vật tư (MA_VAT_TU) tại Bảng 3 ghi bổ sung chữ K và 5 ký tự mã cơ sở KBCB của đơn vị cung cấp máu, giữa mà tương đương và mã bổ sung cách nhau bằng dấu chấm. Ví dụ Bệnh viện A đề nghị thanh toán bộ kít tách tiểu cầu khi sử dụng khối tiểu cầu gạn tách do viện X cung cấp (mã 01920), ghi mã của bộ kít tách tiều cầu là N07.07.010.2.K01920\"\n- Trường hợp máu, chế phẩm máu phải thực hiện các xét nghiệm bắt buộc có điều kiện quy định tại tiết d khoản 10 Điều 3 Thông tư số 17/2020/TT-BYT ngày 12/11/2020 của Bộ Y tế thì ghi thêm mã dịch vụ kỹ thuật của xét nghiệm đó theo quy định tại Bộ mã DMDC do Bộ trưởng Bộ Y tế ban hành tại trường MA_DICH_VU của Bảng này, đồng thời thống kê dịch vụ xét nghiệm này trong Bảng 3;\n- Thuốc thành phẩm không thuộc phạm vi chi trả của quỹ BHYT thì để trống trường này."
+      ]
+    },
+    {
+      "code": "MA_PP_CHEBIEN",
+      "type": "Chuỗi",
+      "maxlen": 255,
+      "required": "",
+      "notes": [
+        "Check DM ban hành ở QĐ 824 -BYT"
+      ]
+    },
+    {
+      "code": "MA_CSKCB_THUOC",
+      "type": "Chuỗi",
+      "maxlen": 10,
+      "required": "",
+      "notes": [
+        "Bổ sung hướng dẫn:\n- Trường hợp nhận thuốc chuyển đến từ cơ sở KBCB khác để điều trị cho người bệnh theo quy định thì ghi C.XXXXX (trong đó XXXXX là mã cơ sở KBCB nơi chuyển thuốc đi);\n- Trường hợp cơ sở KBCB sử dụng thuốc được chỉ định bằng hình thức KBCB từ xa, hỗ trợ KBCB từ xa thì ghi H.XXXXX (trong đó XXXXX là mã cơ sở KCB nơi hỗ trợ chuyên môn).\n- Bãi bỏ hướng dẫn bổ sung tại Quyết định số 4750/QĐ-BYT"
+      ]
+    },
+    {
+      "code": "MA_NHOM",
+      "type": "Số",
+      "maxlen": 2,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "TEN_THUOC",
+      "type": "Chuỗi",
+      "maxlen": 1024,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "DON_VI_TINH",
+      "type": "Chuỗi",
+      "maxlen": 50,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "HAM_LUONG",
+      "type": "Chuỗi",
+      "maxlen": 1024,
+      "required": "x",
+      "notes": [
+        "Bổ sung lưu ý: \n- Đối với các loại khí y tế, máu và chế phẩm của máu, vị thuốc cổ truyền thì để trống."
+      ]
+    },
+    {
+      "code": "DUONG_DUNG",
+      "type": "Chuỗi",
+      "maxlen": 4,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "DANG_BAO_CHE",
+      "type": "Chuỗi",
+      "maxlen": 1024,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "LIEU_DUNG",
+      "type": "Chuỗi",
+      "maxlen": 1024,
+      "required": "x",
+      "notes": [
+        "Bổ sung lưu ý: \n- Đối với các loại thuốc dùng ngoài như nhỏ giọt, bôi,…không xác định được chính xác liều lượng thì chỉ ghi số lần sử dụng trong ngày và số ngày sử dụng: Số lần dùng trong ngày * số ngày sử dụng\n- Trường hợp liều thuốc thay đổi theo từng ngày sử dụng thì ghi chi tiết theo từng ngày."
+      ]
+    },
+    {
+      "code": "CACH_DUNG",
+      "type": "Chuỗi",
+      "maxlen": 1024,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "SO_DANG_KY",
+      "type": "Chuỗi",
+      "maxlen": 255,
+      "required": "Như QĐ 4210",
+      "notes": [
+        "Bổ sung lưu ý:\n- Trường hợp thuốc chưa được cấp giấy phép đăng ký lưu hành nhưng được cấp giấy phép nhập khẩu do Cục Quản lý Dược hoặc Cục Quản lý Y, dược cổ truyền cấp thì được mã hoá như sau: KD.YYYY.X.S (trong đó KD là kinh doanh, YYYY là năm cấp giấy phép, X là số giấy phép nhập khẩu, S là số thứ tự của thuốc trong giấy phép nhập khẩu).\n- Trường hợp thuốc do cơ sở KBCB tự bào chế, pha chế từ nguyên liệu làm thuốc thì ghi số đăng ký của nguyên liệu làm thuốc;\n- Đối với dược liệu thì ghi \"DL\"."
+      ]
+    },
+    {
+      "code": "TT_THAU",
+      "type": "Chuỗi",
+      "maxlen": 50,
+      "required": "Bắt buộc trừ mã nhóm 7,17",
+      "notes": [
+        "+ Định dạng 1: Số Quyết định;Gói thầu;Nhóm thầu;Năm;Đơn vị đấu thầu.\n+ Định dạng 2: Số Quyết định;Năm.\nVí dụ: 456/BVYHCTTW-BH;2023\n+ Định dạng 3: Số quyết định;Gói thầu;Nhóm thầu;Năm\nVí dụ: 250/QĐ-VCR;G1;N3;2022\n+ Định dạng 4:\nSố quyết định;gói thầu;nhóm thầu;năm;Gi.YY\n=> Đơn vị đấu thầu có thể là các mã MA_TINHTHANH, MA_CSKCB, 00-Mã đơn vị thầu quốc gia"
+      ]
+    },
+    {
+      "code": "PHAM_VI",
+      "type": "Số",
+      "maxlen": 1,
+      "required": "x",
+      "notes": [
+        "Chỉ đối tượng QN, CA,CY mới được gửi PHAM_VI = 3",
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi mã để xác định phạm vi của thuốc, trong đó:\n- Mã \"1\": Thuốc được quỹ BHYT thanh toán;\n- Mã \"2\": Thuốc do người bệnh tự trả;\n- Mã \"3\": Thuốc được sử dụng cho các đối tượng thuộc quân đội, công an, cơ yếu theo quy định tại khoản 2 Điều 10 Nghị định 70/2015/NĐ-CP của Chính phủ.\nBãi bỏ diễn giải và đính chính tại Quyết định số 130/QĐ-BYT, Quyết định số 4750/QĐ-BYT"
+      ]
+    },
+    {
+      "code": "TYLE_TT_BH",
+      "type": "Số",
+      "maxlen": 3,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "SO_LUONG",
+      "type": "Số",
+      "maxlen": 10,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "DON_GIA",
+      "type": "Số",
+      "maxlen": 15,
+      "required": "x",
+      "notes": [
+        "Bổ sung hướng dẫn: Đối với cơ sở KBCB tư nhân thì DON_GIA ghi theo quy định tại khoản 3 Điều 95 Nghị định 24/2024/NĐ-CP của Chính phủ."
+      ]
+    },
+    {
+      "code": "THANH_TIEN_BV",
+      "type": "Số",
+      "maxlen": 15,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "THANH_TIEN_BH",
+      "type": "Số",
+      "maxlen": 15,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "T_NGUONKHAC_NSNN",
+      "type": "Số",
+      "maxlen": 15,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "T_NGUONKHAC_VTNN",
+      "type": "Số",
+      "maxlen": 15,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "T_NGUONKHAC_VTTN",
+      "type": "Số",
+      "maxlen": 15,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "T_NGUONKHAC_CL",
+      "type": "Số",
+      "maxlen": 15,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "T_NGUONKHAC",
+      "type": "Số",
+      "maxlen": 15,
+      "required": "x",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nLà số tiền do nguồn khác chi trả.\n- Khi T_NGUONKHAC > 0 thì giảm trừ lần lượt vào các khoản T_BNTT, T_BNCCT, T_BHTT cho đến khi hết số tiền T_NGUONKHAC\nBãi bỏ diễn giải tại Quyết định số 130/QĐ-BYT."
+      ]
+    },
+    {
+      "code": "MUC_HUONG",
+      "type": "Số",
+      "maxlen": 3,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "T_BNTT",
+      "type": "Số",
+      "maxlen": 15,
+      "required": "x",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi số tiền người bệnh tự trả ngoài phạm vi chi trả của quỹ BHYT, làm tròn số đến 2 chữ số thập phân. Sử dụng dấu chấm “.” để phân cách giữa số Nguyên (hàng đơn vị) với số thập phân đầu tiên.\n- Công thức tính: T_BNTT = THANH_TIEN_BV*(1- TYLE_TT_BH/100)\n- Trường hợp có T_NGUONKHAC thì xác định T_BNTT theo hướng dẫn tại trường T_NGUONKHAC\nBãi bỏ diễn giải và đính chính tại Quyết định số 130/QĐ-BYT, Quyết định số 4750/QĐ-BYT"
+      ]
+    },
+    {
+      "code": "T_BNCCT",
+      "type": "Số",
+      "maxlen": 15,
+      "required": "x",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi số tiền người bệnh cùng chi trả trong phạm vi quyền lợi mức hưởng BHYT, làm tròn số đến 2 chữ số thập phân. Sử dụng dấu chấm “.” để phân cách giữa số Nguyên (hàng đơn vị) với số thập phân đầu tiên.\n- Công thức tính: T_BNCCT = THANH_TIEN_BV - T_BHTT - T_BNTT\n- Trường hợp có T_NGUONKHAC thì xác định T_BNCCT theo hướng dẫn tại trường T_NGUONKHAC\nBãi bỏ diễn giải tại Quyết định số 130/QĐ-BYT."
+      ]
+    },
+    {
+      "code": "T_BHTT",
+      "type": "Số",
+      "maxlen": 15,
+      "required": "x",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi số tiền cơ sở KBCB đề nghị cơ quan BHXH thanh toán theo phạm vi quyền lợi mức hưởng BHYT của người bệnh, làm tròn số đến 2 chữ số thập phân. Sử dụng dấu chấm “.” để phân cách giữa số Nguyên (hàng đơn vị) với số thập phân đầu tiên.\n- Công thức tính: T_BHTT = THANH_TIEN_BV*TYLE_TT_BH/100*MUC_HUONG/100\n- Trường hợp có T_NGUONKHAC thì xác định T_BHTT theo hướng dẫn tại trường T_NGUONKHAC\nBãi bỏ diễn giải tại Quyết định số 130/QĐ-BYT."
+      ]
+    },
+    {
+      "code": "MA_KHOA",
+      "type": "Chuỗi",
+      "maxlen": 15,
+      "required": "x",
+      "notes": [
+        "Check cả 2 bảng Danh mục khoa và Danh mục Khoa, phòng, giường => Chỉ cần có khai báo ở 1 trong 2 bảng là hợp lệ",
+        "Chuyển chuỗi từ 15 thành 50"
+      ]
+    },
+    {
+      "code": "MA_BAC_SI",
+      "type": "Chuỗi",
+      "maxlen": 255,
+      "required": "Giữ nguyên như 4210",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi mã bác sỹ khám, chỉ định thuốc (mã hóa theo số Giấy phép hành nghề theo quy định tại Nghị định số 96/2023/NĐ-CP hoặc Chứng chỉ hành nghề còn hiệu lực, sau đây viết tắt là GPHN).\nLưu ý:\n- Trường hợp thuốc được chỉ định bởi bác sỹ tuyến/cấp chuyên môn kỹ thuật cao hơn theo hình thức KBCB từ xa, hỗ trợ KBCB từ xa thì ghi theo nguyên tắc: MA_BAC_SI.TX.XXXXX, trong đó MA_BAC_SI ghi theo số GPHN của bác sỹ tuyến/cấp chuyên môn kỹ thuật cao hơn, XXXXX là mã cơ sở KCB nơi hỗ trợ chuyên môn; đồng thời ghi thêm mã bác sỹ tuyến/cấp chuyên môn kỹ thuật đang điều trị cho người bệnh.\n- Trường hợp bác sỹ đang trong thời gian thực hành theo quy định tại Điều 3 Nghị định số 96/2023/NĐ-CP thì ghi mã GPHN của bác sỹ được phân công hướng dẫn thực hành, sau đó ghi số CCCD của bác sỹ thực hành, cách nhau bằng dấu chấm (.);\n- Trường hợp người hành nghề được huy động, điều động tham gia phòng, chống dịch hoặc thiên tai, thảm họa tại cơ sở KBCB khác, mã hoá theo nguyên tắc: MA_BAC_SI.HD.XXXXX, trong đó MA_BAC_SI ghi theo số GPHN của người hành nghề được điều động, XXXXX là mã cơ sở KCB nơi cử người hành nghề đi; trường hợp người hành nghề không đăng ký hành nghề nhưng được huy động thì XXXXX ghi 2 ký tự đầu là mã tỉnh nơi ra quyết định huy động, 3 ký tự sau ghi XXX.\nBãi bỏ nội dung đính chính, sửa đổi bổ sung tại Quyết định số 4750/QĐ-BYT.",
+        "- TH MA_BAC_SI.TX.XXXXX thì check XXXXX phải nằm trong list: select MA from DM_COSOKCB;\n- TH MA_BAC_SI.HD.XXXXX thì check XXXXX phải nằm trong list: select MA from DM_COSOKCB; hoặc 2 ký tự đầu nằm trong list: Select MA from DM_TINHTHANH where HIEULUC =1; và 3 ký tự sau = XXX\n- TH MA_BAC_SI.X thì check X là 12 ký tự số có ký tự đầu = 0 và 2 ký tự sau đó nằm trong list Select MA from DM_TINHTHANH;"
+      ]
+    },
+    {
+      "code": "MA_DICH_VU",
+      "type": "Chuỗi",
+      "maxlen": 255,
+      "required": "",
+      "notes": [
+        "Sửa đổi, bổ sung lưu ý:\n- Thuốc sử dụng trong DVKT đã chỉ định thực hiện nhưng vì nguyên nhân diễn biến bệnh hoặc thể trạng người bệnh nên không thể tiếp tục thực hiện được kỹ thuật đã chỉ định theo quy định tại khoản 2 Điều 7 Thông tư số 22/2023/TT-BYT thì bổ sung các ký tự \"_TB\" sau mã DVKT tương đương (mã có cấu trúc: XX.YYYY.ZZZZ_TB)\n- Thuốc sử dụng trong DVKT đã được cấp có thẩm quyền phê duyệt thực hiện nhưng chưa được quy định mức giá theo quy định tại khoản 2 Điều 7 Thông tư số 22/2023/TT-BYT thì mã hoá DVKT theo nguyên tắc mã DVKT tương đương, 04 ký tự cuối ghi \"0000\" (mã có cấu trúc: XX.YYYY.0000)\n- Đối với thuốc sử dụng trong dịch vụ kỹ thuật thực hiện bằng phương pháp gây tê nhưng chưa được quy định mức giá tại Phụ lục V Thông tư số 22/2023/TT-BYT thì bổ sung các ký tự \"_TT\" sau mã DVKT tương đương (mã có cấu trúc: XX.YYYY.ZZZZ_TT)",
+        "Check Mã này phải nằm trong bảng XML3"
+      ]
+    },
+    {
+      "code": "NGAY_YL",
+      "type": "Chuỗi",
+      "maxlen": 12,
+      "required": "x",
+      "notes": [
+        "Bãi bỏ nội dung hướng dẫn bổ sung tại Quyết định số 4750/QĐ-BYT.x\nChuyển từ dạng số thành dạng chuỗi"
+      ]
+    },
+    {
+      "code": "NGAY_TH_YL",
+      "type": "Số",
+      "maxlen": 12,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "MA_PTTT",
+      "type": "Số",
+      "maxlen": 1,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "NGUON_CTRA",
+      "type": "Số",
+      "maxlen": 1,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "VET_THUONG_TP",
+      "type": "Số",
+      "maxlen": 1,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "DU_PHONG",
+      "type": "Chuỗi",
+      "maxlen": null,
+      "required": "",
+      "notes": []
+    }
+  ],
+  "XML3": [
+    {
+      "code": "MA_LK",
+      "type": "Chuỗi",
+      "maxlen": 100,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "STT",
+      "type": "Số",
+      "maxlen": 10,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "MA_DICH_VU",
+      "type": "Chuỗi",
+      "maxlen": 50,
+      "required": "Như QĐ 4210",
+      "notes": [
+        "Sửa đổi, bổ sung phần Lưu ý:\n- Trường hợp dịch vụ kỹ thuật có sử dụng vật tư y tế kèm theo: Ghi mã dịch vụ kỹ thuật vào trường MA_DICH_VU, ghi mã vật tư y tế vào trường MA_VAT_TU của Bảng này;\n- Đối với DVKT đã được cấp có thẩm quyền phê duyệt thực hiện nhưng chưa được quy định mức giá theo quy định tại khoản 2 Điều 7 Thông tư số 22/2023/TT-BYT thì mã hoá DVKT theo nguyên tắc mã DVKT tương đương, 04 ký tự cuối ghi \"0000\" (khi đó, mã có cấu trúc: XX.YYYY.0000); DON_GIA_BH = 0; DON_GIA_BV = 0; các thuốc, VTYT (thuộc phạm vi chi trả của quỹ BHYT) đã được sử dụng cho người bệnh thì cơ sở KBCB thống kê vào các trường dữ liệu tương ứng của Bảng 2, Bảng 3;\n- Đối với DVKT đã chỉ định thực hiện nhưng do diễn biến bệnh hoặc thể trạng người bệnh nên không thể tiếp tục thực hiện được kỹ thuật đã chỉ định theo quy định tại khoản 2 Điều 7 Thông tư số 22/2023/TT-BYT thì bổ sung các ký tự \"_TB\"; \n- Đối với DVKT thực hiện bằng phương pháp gây tê nhưng chưa được quy định mức giá tại Phụ lục V Thông tư số 22/2023/TT-BYT thì bổ sung các ký tự \"_TT\" sau mã DVKT tương đương (mã có cấu trúc: XX.YYYY.ZZZZ_TT), trong đó lưu ý đối với dịch vụ kỹ thuật thì DON_GIA_BH = 0, DON_GIA_BV = 0; các thuốc, VTYT (thuộc phạm vi chi trả của quỹ BHYT) đã được sử dụng cho người bệnh thì cơ sở KBCB thống kê vào các trường dữ liệu tương ứng của Bảng 2, Bảng 3.",
+        "Bổ sung trường hợp\nMã có định dạng XX.YYYY.0000 hoặc 3 ký tự cuối là _TT thì bỏ qua mã lỗi 992 cảnh báo check DM_DICHVU_BV;"
+      ]
+    },
+    {
+      "code": "MA_PTTT_QT",
+      "type": "Chuỗi",
+      "maxlen": 255,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "MA_VAT_TU",
+      "type": "Chuỗi",
+      "maxlen": 255,
+      "required": "Như QĐ 4210",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải: \nGhi mã nhóm VTYT quy định tại Thông tư số 04/2017/TT-BYT.\nLưu ý:\n- Chỉ ghi các VTYT chưa có trong cơ cấu giá dịch vụ kỹ thuật, khám bệnh, ngày giường điều trị hoặc thu trọn gói theo trường hợp bệnh, VTYT sử dụng trong DVKT đã chỉ định thực hiện nhưng vì nguyên nhân diễn biến bệnh hoặc thể trạng người bệnh nên không thể tiếp tục thực hiện được kỹ thuật đã chỉ định theo quy định tại khoản 2 Điều 7 Thông tư số 22/2023/TT-BYT; VTYT sử dụng trong DVKT đã được cấp có thẩm quyền phê duyệt thực hiện nhưng chưa được quy định mức giá theo quy định tại khoản 2 Điều 7 Thông tư số 22/2023/TT-BYT.\n- Các VTYT sử dụng trong phẫu thuật, thủ thuật được thanh toán riêng: ghi mã phẫu thuật, thủ thuật vào trường thông tin: <MA_DICH_VU>;\n- Các VTYT không sử dụng trong phẫu thuật, thủ thuật: trường thông tin mã dịch vụ <MA_DICH_VU> để trống;\n- Đối với sinh phẩm xét nghiệm COVID-19: Ghi mã sinh phẩm xét nghiệm COVID-19 theo hướng dẫn tại Phụ lục 9 ban hành kèm theo Quyết định số 5937/QĐ-BYT ngày 30/12/2021 của Bộ trưởng Bộ Y tế.\n- Những VTYT đã được cấp mã theo quy định tại Quyết định số 5086/QĐ-BYT ngày 04/11/2021 của Bộ trưởng Bộ Y tế thì tiếp tục sử dụng mã được cấp.  \nBãi bỏ nội dung diễn giải tại Quyết định số 130/QĐ-BYT."
+      ]
+    },
+    {
+      "code": "MA_NHOM",
+      "type": "Số",
+      "maxlen": 2,
+      "required": "x",
+      "notes": [
+        "MA_NHOM = 19 => Không valid all thông tin trong bảng"
+      ]
+    },
+    {
+      "code": "GOI_VTYT",
+      "type": "Chuỗi",
+      "maxlen": 4,
+      "required": "",
+      "notes": [
+        "Chuyển ký tự max từ 4\n thành 3 ký tự max"
+      ]
+    },
+    {
+      "code": "TEN_VAT_TU",
+      "type": "Chuỗi",
+      "maxlen": 1024,
+      "required": "Như QĐ 4210",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\n- Ghi tên nhóm VTYT theo quy định tại Thông tư số 04/2017/TT-BYT.\nBãi bỏ nội dung diễn giải tại Quyết định số 130/QĐ-BYT và Quyết định 4750/QĐ-BYT."
+      ]
+    },
+    {
+      "code": "TEN_DICH_VU",
+      "type": "Chuỗi",
+      "maxlen": 1024,
+      "required": "Như QĐ 4210",
+      "notes": []
+    },
+    {
+      "code": "MA_XANG_DAU",
+      "type": "Chuỗi",
+      "maxlen": 20,
+      "required": "Bắt buộc khi MA_NHOM = 12",
+      "notes": []
+    },
+    {
+      "code": "DON_VI_TINH",
+      "type": "Chuỗi",
+      "maxlen": 50,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "PHAM_VI",
+      "type": "Số",
+      "maxlen": 1,
+      "required": "x",
+      "notes": [
+        "Chỉ đối tượng QN, CA,CY mới được gửi PHAM_VI = 3",
+        "'Sửa đổi toàn bộ nội dung diễn giải:\nGhi mã để xác định phạm vi của VTYT, dịch vụ kỹ thuật, trong đó:\n- Mã \"1\": VTYT, dịch vụ kỹ thuật được quỹ BHYT thanh toán;\n- Mã \"2\": VTYT, dịch vụ kỹ thuật do người bệnh tự trả;\n- Mã \"3\": VTYT, dịch vụ kỹ thuật được sử dụng cho các đối tượng thuộc quân đội, công an, cơ yếu theo quy định tại khoản 2 Điều 10 Nghị định 70/2015/NĐ-CP của Chính phủ."
+      ]
+    },
+    {
+      "code": "SO_LUONG",
+      "type": "Số",
+      "maxlen": 10,
+      "required": "x",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi số lượng ngày giường bệnh, công khám, dịch vụ kỹ thuật hoặc VTYT thực tế sử dụng cho người bệnh, làm tròn số đến 3 chữ số thập phân. Sử dụng dấu chấm “.” để phân cách giữa số Nguyên (hàng đơn vị) với số thập phân đầu tiên."
+      ]
+    },
+    {
+      "code": "DON_GIA_BV",
+      "type": "Số",
+      "maxlen": 15,
+      "required": "x",
+      "notes": [
+        "'Sửa đổi toàn bộ nội dung diễn giải:\n- Đối với cơ sở KBCB nhà nước: Ghi đơn giá dịch vụ kỹ thuật, tiền giường bệnh, tiền công khám bệnh theo yêu cầu (nếu có) hoặc giá dịch vụ KBCB không thuộc danh mục do BHYT thanh toán mà không phải là dịch vụ KBCB theo yêu cầu;\n- Đối với cơ sở KBCB tư nhân: Giá do cơ sở KBCB tư nhân ban hành theo quy định của pháp luật;\n- Đối với VTYT: Ghi giá theo hóa đơn mua vào của cơ sở KBCB. Trường hợp VTYT do cơ sở KBCB tự sản xuất: là giá do cơ sở KBCB xây dựng phê duyệt theo quy định làm căn cứ thanh toán BHYT;\n- Đơn giá làm tròn đến 3 chữ số thập phân. Sử dụng dấu chấm “.” để phân cách giữa số Nguyên (hàng đơn vị) với số thập phân đầu tiên.\nLưu ý: Trường hợp VTYT tái sử dụng được tính theo công thức: DON_GIA_BV = DON_GIA_BH (là giá thanh toán của 1 lần tái sử dụng VTYT)."
+      ]
+    },
+    {
+      "code": "DON_GIA_BH",
+      "type": "Số",
+      "maxlen": 15,
+      "required": "x",
+      "notes": [
+        "Sửa đổi, bổ sung nội dung lưu ý:\n- Đối với dịch vụ kỹ thuật, tiền giường bệnh, tiền công khám bệnh: Ghi đơn giá do cơ quan có thẩm quyền ban hành/phê duyệt áp dụng trong thanh toán BHYT;\n- Đối với VTYT: Ghi đơn giá đấu thầu, mua sắm VTYT hoặc giá thanh toán VTYT tại cơ sở KBCB tư nhân theo quy định;\n- Trường hợp VTYT có quy định mức thanh toán BHYT và đơn giá mua vào (DON_GIA_BV) cao hơn mức thanh toán BHYT thì DON_GIA_BH = T_TRANTT, trường hợp VTYT có quy định mức thanh toán BHYT và đơn giá mua vào (DON_GIA_BV) không cao hơn mức thanh toán BHYT thì DON_GIA_BH = DON_GIA_BV;\n- Trường hợp VTYT tái sử dụng: DON_GIA_BH là giá thanh toán của 1 lần tái sử dụng VTYT."
+      ]
+    },
+    {
+      "code": "TT_THAU",
+      "type": "Chuỗi",
+      "maxlen": 100,
+      "required": "Bắt buộc khi MA_NHOM = 10",
+      "notes": [
+        "Có 4 định dạng TT_THAU:\n- Số quyết định; số gói thầu; mã nhóm thầu; năm ban hành\n- Số quyết định.Mã đơn vị ban hành quyết định;Gi;Ni;XXXX.\n- Số quyết định;XXXX\n- Số quyết định.Mã đơn vị ban hành quyết định;Gi;XXXX\n\nMã đơn vị bàn hành quyết định: 00 hoặc mã tỉnh thành hoặc mã CSKCB\nGi: nằm trong khoảng G1-G999\nNi: trường MA nằm trong bảng DM_NHOM_VTYT\nXXXX: Giá trị Năm (bắt buộc <= năm hiện tại + 1)\nCắt số quyết định theo từng định dạng trên insert vào trường QUYETDINH"
+      ]
+    },
+    {
+      "code": "TYLE_TT_DV",
+      "type": "Số",
+      "maxlen": 3,
+      "required": "x",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi tỷ lệ thanh toán đối với một số dịch vụ kỹ thuật đặc biệt. Tỷ lệ này là số nguyên dương. Cụ thể:\n- Đối với ngày giường bệnh điều trị nội trú, trường hợp người bệnh chuyển từ 02 khoa trở lên trong cùng một ngày:\n+ Khoa có giá tiền giường cao nhất và thấp nhất: mã tiền giường và đơn giá không thay đổi; số lượng ghi 0,5; trường thông tin \"TYLE_TT_DV\" ghi 100;\n+ Các khoa khác (nếu có), mã tiền giường và đơn giá không thay đổi: số lượng ghi \"0\";\n- Trường hợp người bệnh chuyển từ 02 khoa trở lên trong cùng một ngày đồng thời có nằm ghép:\n+ Nếu nằm ghép 02 người, mã tiền giường và đơn giá không thay đổi: số lượng ghi 0,5; trường thông tin TYLE_TT_DV ghi 50;\n+ Nếu nằm ghép từ 03 người trở lên: mã tiền giường và đơn giá không thay đổi; số lượng ghi 0,5; trường thông tin \"TYLE_TT_DV\" ghi 33;\n+ Nếu nằm 01 người/giường bệnh thì trường thông tin \"TYLE_TT_DV\" ghi 100;\n+ Trường hợp 01 người bệnh nằm trên 01 băng ca/ giường gấp: mã tiền giường và đơn giá không thay đổi, trường thông tin \"TYLE_TT_DV\" ghi 50\n- Đối với tiền khám bệnh, trường thông tin \"TYLE_TT_DV\" ghi 100 tương ứng với lần khám bệnh thứ nhất, ghi 30 tương ứng với lần khám thứ hai đến lần khám thứ tư, ghi 10 tương ứng với lần khám thứ năm, ghi 0 từ lần khám thứ sáu trở đi.\n- Đối với trường hợp thực hiện nhiều can thiệp trong cùng một lần phẫu thuật, từ dịch vụ kỹ thuật thứ 2 trở đi, trường thông tin \"TYLE_TT_DV\" ghi 50 đối với trường hợp phẫu thuật do một kíp phẫu thuật thực hiện; ghi 80 đối với trường hợp phẫu thuật do kíp phẫu thuật khác thực hiện; ghi 80 nếu dịch vụ phát sinh là thủ thuật.\nCác trường hợp còn lại TYLE_TT_DV ghi 100"
+      ]
+    },
+    {
+      "code": "TYLE_TT_BH",
+      "type": "Số",
+      "maxlen": 3,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "THANH_TIEN_BV",
+      "type": "Số",
+      "maxlen": 15,
+      "required": "x",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi số tiền thanh toán theo giá của bệnh viện. Trường thông tin này được xác định như sau: THANH_TIEN_BV = SO_LUONG * DON_GIA_BV * TYLE_TT_DV/100, làm tròn số đến 2 chữ số thập phân.\n- Trường hợp cơ sở y tế thu đủ theo đơn giá bệnh viện: TYLE_TT_DV = 100\n- Trường hợp cơ sở y tế giảm đơn giá bệnh viện: điều chỉnh tỷ lệ TYLE_TT_DV = 100 - TỶ LỆ GIẢM ĐƠN GIÁ. Ví dụ giảm 10% đơn giá bệnh viện thì ghi TYLE_TT_DV = 100 - 10 = 90\n- Khi cơ sở y tế không thu thêm của người bệnh phần chênh của DON_GIA_BH trong các trường hợp đặc biệt nêu tại phần hướng dẫn của TYLE_TT_DV: THANH_TIEN_BV = SO_LUONG * DON_GIA_BV - SO_LUONG * DON_GIA_BH * (100 - TYLE_TT_DV)/100\nVí dụ khám bệnh lần 2: DON_GIA_BV = 100.000; DON_GIA_BH = 40.000; TYLE_TT_DV = 30; TYLE_TT_BH = 100 thì THANH_TIEN_BV = 1*100.000 - 1*40.000*(100-30)/100 = 72.000\nBãi bỏ nội dung diễn giải và đính chính tại Quyết định số 130/QĐ-BYT và Quyết định số 4750/QĐ-BYT."
+      ]
+    },
+    {
+      "code": "THANH_TIEN_BH",
+      "type": "Số",
+      "maxlen": 15,
+      "required": "x",
+      "notes": [
+        "'Sửa đổi toàn bộ nội dung diễn giải:\nGhi mức giá do quỹ BHYT thanh toán theo quy định của cơ quan có thẩm quyền. Trường thông tin này được xác định như sau: \nTHANH_TIEN_BH = SO_LUONG * DON_GlA_BH * TYLE_TT_DV/100 * TYLE_TT_BH/100, làm tròn số đến 2 chữ số thập phân. Sử dụng dấu chấm “.” để phân cách giữa số nguyên (hàng đơn vị) với số thập phân đầu tiên.\nBãi bỏ nội dung diễn giải tại Quyết định số 130/QĐ-BYT."
+      ]
+    },
+    {
+      "code": "T_TRANTT",
+      "type": "Số",
+      "maxlen": 15,
+      "required": "",
+      "notes": [
+        "'Sửa đổi toàn bộ nội dung diễn giải:\nĐối với các VTYT có mức thanh toán BHYT theo quy định tại Thông tư của Bộ Y tế ban hành danh mục và tỷ lệ, điều kiện thanh toán đối với VTYT thuộc phạm vi được hưởng của người tham gia BHYT: Ghi mức thanh toán BHYT của VTYT."
+      ]
+    },
+    {
+      "code": "MUC_HUONG",
+      "type": "Số",
+      "maxlen": 3,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "T_NGUONKHAC_NSNN",
+      "type": "Số",
+      "maxlen": 15,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "T_NGUONKHAC_VTNN",
+      "type": "Số",
+      "maxlen": 15,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "T_NGUONKHAC_VTTN",
+      "type": "Số",
+      "maxlen": 15,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "T_NGUONKHAC_CL",
+      "type": "Số",
+      "maxlen": 15,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "T_NGUONKHAC",
+      "type": "Số",
+      "maxlen": 15,
+      "required": "x",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nLà số tiền do nguồn khác chi trả.\n- Khi T_NGUONKHAC > 0 thì giảm trừ lần lượt vào các khoản T_BNTT, T_BNCCT, T_BHTT cho đến khi hết số tiền T_NGUONKHAC\nBãi bỏ diễn giải tại Quyết định số 130/QĐ-BYT."
+      ]
+    },
+    {
+      "code": "T_BNTT",
+      "type": "Số",
+      "maxlen": 15,
+      "required": "x",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi số tiền người bệnh tự trả ngoài phạm vi chi trả của Quỹ BHYT, làm tròn số đến 2 chữ số thập phân. Sử dụng dấu chấm “.” để phân cách giữa số Nguyên (hàng đơn vị) với số thập phân đầu tiên.\n- Công thức tính: T_BNTT = THANH_TIEN_BV - THANH_TIEN_BH\n- Trường hợp có T_NGUONKHAC thì xác định T_BNTT theo hướng dẫn tại trường T_NGUONKHAC\nBãi bỏ diễn giải tại Quyết định số 130/QĐ-BYT."
+      ]
+    },
+    {
+      "code": "T_BNCCT",
+      "type": "Số",
+      "maxlen": 15,
+      "required": "x",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi số tiền người bệnh cùng chi trả trong phạm vi quyền lợi mức hưởng BHYT, làm tròn số đến 2 chữ số thập phân. Sử dụng dấu chấm “.” để phân cách giữa số Nguyên (hàng đơn vị) với số thập phân đầu tiên.\n- Công thức tính: T_BNCCT = THANH_TIEN_BH - T_BHTT\n- Trường hợp có T_NGUONKHAC thì xác định T_BNCCT theo hướng dẫn tại trường T_NGUONKHAC\nBãi bỏ diễn giải tại Quyết định số 130/QĐ-BYT."
+      ]
+    },
+    {
+      "code": "T_BHTT",
+      "type": "Số",
+      "maxlen": 15,
+      "required": "x",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi số tiền cơ sở KBCB đề nghị cơ quan BHXH thanh toán theo phạm vi quyền lợi, mức hưởng BHYT của người bệnh, làm tròn số đến 2 chữ số thập phân. Sử dụng dấu chấm “.” để phân cách giữa số Nguyên (hàng đơn vị) với số thập phân đầu tiên.\n- Công thức tính: T_BHTT = THANH_TIEN_BH*MUC_HUONG/100\n- Trường hợp có T_NGUONKHAC thì xác định T_BHTT theo hướng dẫn tại trường T_NGUONKHAC\nBãi bỏ diễn giải tại Quyết định số 130/QĐ-BYT."
+      ]
+    },
+    {
+      "code": "MA_KHOA",
+      "type": "Chuỗi",
+      "maxlen": 20,
+      "required": "x",
+      "notes": [
+        "Check cả 2 bảng Danh mục khoa và Danh mục Khoa, phòng, giường => Chỉ cần có khai báo ở 1 trong 2 bảng là hợp lệ",
+        "Chuyển từ max 20 ký tự\n thành max 50- ký tự"
+      ]
+    },
+    {
+      "code": "MA_GIUONG",
+      "type": "Chuỗi",
+      "maxlen": 50,
+      "required": "",
+      "notes": [
+        "Bãi bỏ nội dung lưu ý."
+      ]
+    },
+    {
+      "code": "MA_BAC_SI",
+      "type": "Chuỗi",
+      "maxlen": 255,
+      "required": "x",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi mã người hành nghề thực hiện khám, chỉ định (mã hóa theo số GPHN).\nLưu ý:\n Trường hợp dịch vụ kỹ thuật được chỉ định bởi bác sỹ tuyến/cấp chuyên môn kỹ thuật cao hơn theo hình thức KBCB từ xa, hỗ trợ KBCB từ xa thì ghi theo nguyên tắc: MA_BAC_SI.TX.XXXXX, trong đó MA_BAC_SI ghi theo số GPHN của bác sỹ tuyến/cấp chuyên môn kỹ thuật cao hơn, XXXXX là mã cơ sở KCB nơi hỗ trợ chuyên môn; đồng thời ghi thêm mã bác sỹ tuyến/cấp chuyên môn kỹ thuật đang điều trị cho người bệnh.\n- Trường hợp bác sỹ đang trong thời gian thực hành theo quy định tại Điều 3 Nghị định số 96/2023/NĐ-CP thì ghi mã GPHN của bác sỹ được phân công hướng dẫn thực hành, sau đó ghi số CCCD của bác sỹ thực hành, cách nhau bằng dấu chấm (.);\n- Trường hợp người hành nghề được huy động, điều động tham gia phòng, chống dịch hoặc thiên tai, thảm họa tại cơ sở KBCB khác, mã hoá theo nguyên tắc: MA_BAC_SI.HD.XXXXX, trong đó MA_BAC_SI ghi theo số GPHN của người hành nghề được điều động, XXXXX là mã cơ sở KCB nơi cử người hành nghề đi; trường hợp người hành nghề không đăng ký hành nghề nhưng được huy động thì XXXXX ghi 2 ký tự đầu là mã tỉnh nơi ra quyết định huy động, 3 ký tự sau ghi XXX.",
+        "- TH MA_BAC_SI.TX.XXXXX thì check XXXXX phải nằm trong list: select MA from DM_COSOKCB;\n- TH MA_BAC_SI.HD.XXXXX thì check XXXXX phải nằm trong list: select MA from DM_COSOKCB; hoặc 2 ký tự đầu nằm trong list: Select MA from DM_TINHTHANH where HIEULUC =1; và 3 ký tự sau = XXX\n- TH MA_BAC_SI.X thì check X là 12 ký tự số có ký tự đầu = 0 và 2 ký tự sau đó nằm trong list Select MA from DM_TINHTHANH;"
+      ]
+    },
+    {
+      "code": "NGUOI_THUC_HIEN",
+      "type": "Chuỗi",
+      "maxlen": 255,
+      "required": "Bắt buộc MA_NHOM =1,2,3,8,18",
+      "notes": [
+        "Nếu là dịch vụ chuyển xét nghiệm CLS thì không bắt buộc nhập (Mã dịch vụ là mã K.XXXXX)",
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi mã nhân viên y tế thực hiện dịch vụ kỹ thuật (mã hóa theo số GPHN).Trường hợp người thực hiện DVKT không cần phải cấp GPHN theo quy định tại điểm g khoản 4 Điều 40 Nghị định số 96/2023/NĐ-CP thì ghi số CCCD hoặc số định danh cá nhân trên thẻ căn cước.\nLưu ý:\n- Trường hợp có nhiều nhân viên y tế cùng thực hiện thì ghi mã GPHN của các nhân viên y tế, cách nhau bằng dấu chấm phẩy “;”;\n- Trường hợp người hành nghề được huy động, điều động tham gia phòng, chống dịch hoặc thiên tai, thảm họa tại cơ sở KBCB khác, mã hoá theo nguyên tắc: MA_BAC_SI.HD.XXXXX, trong đó MA_BAC_SI ghi theo số GPHN của người hành nghề được điều động, XXXXX là mã cơ sở KCB nơi cử người hành nghề đi; trường hợp người hành nghề không đăng ký hành nghề nhưng được huy động thì XXXXX ghi 2 ký tự đầu là mã tỉnh nơi ra quyết định huy động, 3 ký tự sau ghi XXX;\n- Trường hợp dịch vụ kỹ thuật được thực hiện bởi bác sỹ tại cơ sở KBCB chuyển giao kỹ thuật theo quy định tại Điều 84, Điều 85 Nghị định số 96/2023/NĐ-CP thì ghi theo nguyên tắc: MA_BAC_SI.CG.XXXXX, trong đó MA_BAC_SI ghi theo số GPHN của bác sỹ thực hiện chuyển giao kỹ thuật, XXXXX là mã cơ sở KBCB chuyển giao kỹ thuật;\n- Trường thông tin này không bắt buộc trong trường hợp xét nghiệm cận lâm sàng được chuyển nơi khác thực hiện.",
+        "Trường hợp: NGUOI_THUC_HIEN.HD.XXXXX thì check XXXXX phải nằm trong list: select MA from DM_COSOKCB; hoặc 2 ký tự đầu nằm trong list: Select MA from DM_TINHTHANH where HIEULUC =1; và 3 ký tự sau = XXX"
+      ]
+    },
+    {
+      "code": "MA_BENH",
+      "type": "Chuỗi",
+      "maxlen": 100,
+      "required": "",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi mã ICD10 của bệnh hoặc triệu chứng cần chỉ định DVKT, kể cả các trường hợp điều trị triệu chứng, bệnh nghi ngờ cần theo dõi hoặc các DVKT để chẩn đoán phân biệt. Trường hợp không có thông tin ở trường này thì được hiểu là DVKT được chỉ định để chẩn đoán, điều trị bệnh chính (MA_BENH_CHINH) ở Bảng 1."
+      ]
+    },
+    {
+      "code": "MA_BENH_YHCT",
+      "type": "Chuỗi",
+      "maxlen": 150,
+      "required": "",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nTrường hợp người bệnh được chỉ định DVKT YHCT, kể cả các trường hợp điều trị triệu chứng, bệnh nghi ngờ cần theo dõi hoặc các DVKT để chẩn đoán phân biệt. Trường hợp không có thông tin ở trường này thì được hiểu là DVKT YHCT được chỉ định để chẩn đoán, điều trị bệnh chính.\n- Điều chỉnh kích thước tối đa 150 ký tự."
+      ]
+    },
+    {
+      "code": "NGAY_YL",
+      "type": "Chuỗi",
+      "maxlen": 12,
+      "required": "x",
+      "notes": [
+        "Bổ sung lưu ý:\n- Riêng ngày giường bệnh, cơ sở KBCB phải thực hiện việc ghi ngày y lệnh theo ngày bắt đầu sử dụng hoặc ngày thay đổi mã giường, loại giường, giá giường, nằm ghép, chuyển giữa các khoa.\n- Đối với vật tư y tế: Ghi ngày thực hiện phẫu thuật, thủ thuật, can thiệp có sử dụng vật tư y tế để xác định mức trần thanh toán vật tư y tế cho một lần sử dụng dịch vụ kỹ thuật (vật tư y tế chưa có trong cơ cấu giá dịch vụ kỹ thuật).\nBãi bỏ nội dung lưu ý tại Quyết định số 4750/QĐ-BYT.\nChuyển thành dạng Chuỗi, max 12 ký tự"
+      ]
+    },
+    {
+      "code": "NGAY_TH_YL",
+      "type": "Chuỗi",
+      "maxlen": 12,
+      "required": "bắt buộc MA_NHOM =1,2,3,8,18",
+      "notes": [
+        "Nếu là dịch vụ chuyển xét nghiệm CLS thì không bắt buộc nhập (Mã dịch vụ là mã K.XXXXX)",
+        "Bổ sung lưu ý: \nĐối với giường điều trị ban ngày thì ghi theo từng ngày điều trị trong đó NGAY_TH_YL là thời điểm bắt đầu sử dụng giường bệnh.\nChuyển thành dạng chuỗi, max 12 ký tự"
+      ]
+    },
+    {
+      "code": "NGAY_KQ",
+      "type": "Chuỗi",
+      "maxlen": 12,
+      "required": "",
+      "notes": [
+        ">= NGAY_YL \n<= Ngày Hiện tại\nCho phép Update nếu là DVKT (MA_NHOM = 1) chỉ trong 60 ngày ở Cổng tiếp nhận",
+        "Bổ sung lưu ý: \n- Trường hợp kết quả xét nghiệm để đánh giá kết quả điều trị có sau ngày người bệnh kết thúc đợt KBCB, cơ sở KBCB bổ sung đầy đủ thông tin trường này và gửi hồ sơ thay thế lên Cổng tiếp nhận để đề nghị thanh toán;\n- Đối với giường điều trị ban ngày thì ghi theo từng ngày điều trị trong đó NGAY_KQ là thời điểm kết thúc sử dụng giường bệnh.\nChuyển thành chuỗi, 12 ký tự"
+      ]
+    },
+    {
+      "code": "MA_PTTT",
+      "type": "Số",
+      "maxlen": 1,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "VET_THUONG_TP",
+      "type": "Số",
+      "maxlen": 1,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "PP_VO_CAM",
+      "type": "Số",
+      "maxlen": 1,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "VI_TRI_TH_DVKT",
+      "type": "Số",
+      "maxlen": 3,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "MA_MAY",
+      "type": "Chuỗi",
+      "maxlen": 1024,
+      "required": "",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi mã các máy thực hiện dịch vụ cận lâm sàng, phẫu thuật, thủ thuật (máy xét nghiệm, máy XQuang, máy siêu âm…), tạm thời được ghi theo nguyên tắc: XX.n.Z, trong đó:\n- XX hoặc XXX: Mã nhóm máy thực hiện, trong đó: Huyết học ghi mã \"HH\"; vi sinh ghi mã \"VS\"; sinh hóa ghi mã \"SH\"; siêu âm ghi mã \"SA\"; Xquang ghi mã \"XQ\"; chụp cắt lớp vi tính ghi mã \"CL\"; chụp MRI ghi mã \"MRI\"; máy thực hiện phẫu thuật ghi mã \"PT\"; máy thực hiện thủ thuật ghi mã \"TT\"; máy xét nghiệm đa chức năng thì ghi mã \"DN\"; máy xạ trị ghi mã \"XT\"; máy chụp SPECT ghi mã \"SP\"; máy chụp PET/CT ghi mã \"PET\"; máy xạ hình xương ghi mã \"XH\"; máy nội soi ghi mã \"NS\"; máy chụp mạch xoá nền DSA ghi mã \"DSA\"; máy điện tim ghi mã \"ĐT\",....(Đối với các máy chưa quy định mã nhóm máy (XX hoặc XXX) thì ghi các chữ cái đầu tiên theo phiên âm tiếng Việt của máy, tối đa không quá 03 ký tự đầu tiên).\n- n: Ký hiệu của nguồn kinh phí mua máy (1: ngân sách nhà nước; 2: tài trợ, viện trợ, hỗ trợ; 3: nguồn khác). Trường hợp n = 3 thì ghi cụ thể nguồn kinh phí trong dấu [...]). Ví dụ: Nguồn kinh phí mua máy từ nguồn vay ngân hàng thì ghi [vaynganhang]\n- Z: Số serial của máy (Ghi cả phần chữ và phần số). Trường hợp không có số serial của máy thì sử dụng mã quản lý của máy do cơ sở KBCB lập. Đối với hệ thống máy gồm nhiều máy thì ghi tất cả các serial của các máy, cách nhau bằng dấu chấm phẩy \";\"\n- Trường thông tin này không bắt buộc trong trường hợp xét nghiệm cận lâm sàng được chuyển nơi khác thực hiện;\n- Trường thông tin này không bắt buộc trong trường hợp DVKT không thực hiện trên máy.",
+        "Sửa định dạng MA_MAY ghi theo nguyên tắc XX.n.Z\nXX - 2 kí tự\nn  - 1 kí tự = 1;2;3\n( Trường hợp n = 3 thì sau kí tự n sẽ ghi cụ thể nguồn kinh phí trong dấu [...] )\nZ: chuỗi ký tự"
+      ]
+    },
+    {
+      "code": "MA_HIEU_SP",
+      "type": "Chuỗi",
+      "maxlen": 255,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "TAI_SU_DUNG",
+      "type": "Số",
+      "maxlen": 1,
+      "required": "",
+      "notes": [
+        "TAI_SD = 1 thì DONGIA_BV = DONGIA_BH"
+      ]
+    },
+    {
+      "code": "DU_PHONG",
+      "type": "Chuỗi",
+      "maxlen": null,
+      "required": "",
+      "notes": []
+    }
+  ],
+  "XML4": [
+    {
+      "code": "MA_LK",
+      "type": "Chuỗi",
+      "maxlen": 100,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "STT",
+      "type": "Số",
+      "maxlen": 10,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "MA_DICH_VU",
+      "type": "Chuỗi",
+      "maxlen": 50,
+      "required": "",
+      "notes": [
+        "Bổ sung nội dung:\nTăng kích thước tối đa lên 50 ký tự."
+      ]
+    },
+    {
+      "code": "MA_CHI_SO",
+      "type": "Chuỗi",
+      "maxlen": 255,
+      "required": "",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\n- Ghi mã chỉ số xét nghiệm, chẩn đoán hình ảnh, thăm dò chức năng theo Phụ lục số 11 ban hành kèm theo Quyết định số 7603/QĐ-BYT ngày 25 tháng 12 năm 2018 của Bộ trưởng Bộ Y tế về việc ban hành danh mục bộ mã dùng chung áp dụng trong quản lý KBCB và thanh toán BHYT. Trường hợp chưa có mã chỉ số thì tạm thời mã hoá bằng tên chỉ số (viết liền không có dấu).\n- Chỉ ghi các chỉ số có đơn vị đo lường.\n- Tăng kích thước tối đa lên 255."
+      ]
+    },
+    {
+      "code": "TEN_CHI_SO",
+      "type": "Chuỗi",
+      "maxlen": 255,
+      "required": "x",
+      "notes": [
+        "Bắt buộc nhập",
+        "Sửa đổi toàn bộ nội dung diễn giải:\n- Ghi tên chỉ số xét nghiệm, chẩn đoán hình ảnh, thăm dò chức năng theo quy định.\n- Chỉ ghi các chỉ số có đơn vị đo lường."
+      ]
+    },
+    {
+      "code": "GIA_TRI",
+      "type": "Chuỗi",
+      "maxlen": 255,
+      "required": "",
+      "notes": [
+        "Cho phép Update  chỉ trong 60 ngày ở Cổng tiếp nhận",
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi giá trị chỉ số (kết quả xét nghiệm, thăm dò chức năng).\nTrường hợp giá trị xét nghiệm để đánh giá kết quả điều trị có sau ngày người bệnh kết thúc đợt KBCB, cơ sở KBCB bổ sung đầy đủ thông tin trường này và gửi hồ sơ thay thế lên Cổng tiếp nhận để đề nghị thanh toán.\n- Chỉ ghi các chỉ số có đơn vị đo lường.\n- Tăng kích thước tối đa 255 ký tự",
+        "trường GIA_TRI tăng kích thước\n tối đa 255 ký tự"
+      ]
+    },
+    {
+      "code": "DON_VI_DO",
+      "type": "Chuỗi",
+      "maxlen": 50,
+      "required": "",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi đơn vị đo của chỉ số xét nghiệm, thăm dò chức năng theo Phụ lục 11 ban hành kèm theo Quyết định số 7603/QĐ-BYT ngày 25 tháng 12 năm 2018 của Bộ trưởng Bộ Y tế."
+      ]
+    },
+    {
+      "code": "MO_TA",
+      "type": "Chuỗi",
+      "maxlen": null,
+      "required": "",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi các mô tả kết quả cận lâm sàng (chẩn đoán hình ảnh, thăm dò chức năng, giải phẫu bệnh) của người đọc kết quả."
+      ]
+    },
+    {
+      "code": "KET_LUAN",
+      "type": "Chuỗi",
+      "maxlen": null,
+      "required": "",
+      "notes": [
+        "Bắt buộc nhập nếu MA_NHOM (Bảng 3) = 2",
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi các kết luận của người đọc kết quả.\nTrường hợp xét nghiệm có kết quả xác định ở trường GIA_TRI thì để trống trường thông tin này."
+      ]
+    },
+    {
+      "code": "NGAY_KQ",
+      "type": "Số",
+      "maxlen": 12,
+      "required": "Bắt buộc khi trường GIA_TRI có dữ liệu",
+      "notes": [
+        "Bổ sung hướng dẫn: \nTrường hợp kết quả xét nghiệm để đánh giá kết quả điều trị có sau ngày người bệnh kết thúc đợt KBCB, cơ sở KBCB bổ sung đầy đủ thông tin trường này và gửi hồ sơ thay thế lên Cổng tiếp nhận để đề nghị thanh toán."
+      ]
+    },
+    {
+      "code": "MA_BS_DOC_KQ",
+      "type": "Chuỗi",
+      "maxlen": 255,
+      "required": "x",
+      "notes": [
+        "Trường hợp MA_DICH_VU là DVKT chuyển giao (K.XXXXX) thì không bắt buộc nhập",
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi mã của người có thẩm quyền đọc hoặc duyệt kết quả đọc (mã hóa theo số GPHN).\nLưu ý: \n- Trường hợp người có thẩm quyền đọc hoặc duyệt kết quả đọc là bác sỹ tuyến/cấp chuyên môn kỹ thuật cao hơn theo hình thức KBCB từ xa, hỗ trợ KBCB từ xa thì ghi theo nguyên tắc: MA_BAC_SI.TX.XXXXX, trong đó MA_BAC_SI ghi theo số GPHN của bác sỹ tuyến/cấp chuyên môn kỹ thuật cao hơn, XXXXX là mã cơ sở KCB nơi hỗ trợ chuyên môn;\n- Trường hợp dịch vụ kỹ thuật được thực hiện bởi bác sỹ tại cơ sở KBCB chuyển giao kỹ thuật theo quy định tại Điều 84, Điều 85 Nghị định số 96/2023/NĐ-CP thì ghi theo nguyên tắc: MA_BAC_SI.CG.XXXXX, trong đó MA_BAC_SI ghi theo số GPHN của bác sỹ thực hiện chuyển giao kỹ thuật, XXXXX là mã cơ sở KBCB chuyển giao kỹ thuật."
+      ]
+    },
+    {
+      "code": "DU_PHONG",
+      "type": "Chuỗi",
+      "maxlen": null,
+      "required": "",
+      "notes": []
+    }
+  ],
+  "XML5": [
+    {
+      "code": "MA_LK",
+      "type": "Chuỗi",
+      "maxlen": 100,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "STT",
+      "type": "Số",
+      "maxlen": 10,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "DIEN_BIEN_LS",
+      "type": "Chuỗi",
+      "maxlen": null,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "GIAI_DOAN_BENH",
+      "type": "Chuỗi",
+      "maxlen": null,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "HOI_CHAN",
+      "type": "Chuỗi",
+      "maxlen": null,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "PHAU_THUAT",
+      "type": "Chuỗi",
+      "maxlen": null,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "THOI_DIEM_DBLS",
+      "type": "Chuỗi",
+      "maxlen": 12,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "NGUOI_THUC_HIEN",
+      "type": "Chuỗi",
+      "maxlen": 255,
+      "required": "x",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi mã của nhân viên y tế thực hiện ghi chép diễn biến lâm sàng (mã hóa theo số GPHN). Trường hợp nhân viên y tế không phải đăng ký hành nghề thì ghi số CCCD hoặc số định danh cá nhân.\nLưu ý: Trường hợp có nhiều người thực hiện ghi chép diễn biến lâm sàng thì ghi người thực hiện chính đầu tiên, giữa các người thực hiện ghi chép diễn biến lâm sàng cách nhau bằng dấu chấm phẩy “;”."
+      ]
+    },
+    {
+      "code": "DU_PHONG",
+      "type": "Chuỗi",
+      "maxlen": null,
+      "required": "",
+      "notes": []
+    }
+  ],
+  "XML6": [
+    {
+      "code": "MA_LK",
+      "type": "Chuỗi",
+      "maxlen": 100,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "MA_THE_BHYT",
+      "type": "Chuỗi",
+      "maxlen": null,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "SO_CCCD",
+      "type": "Chuỗi",
+      "maxlen": 15,
+      "required": "",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\n- Ghi số căn cước công dân hoặc số định danh cá nhân trên thẻ căn cước hoặc giấy chứng nhận căn cước hoặc giấy khai sinh của người bệnh. \n- Trường hợp người bệnh là người nước ngoài thì ghi số hộ chiếu.\n- Trường hợp bất khả kháng như trẻ sơ sinh hoặc người bệnh mất ý thức, tâm thần không thể lấy được thông tin số định danh cá nhân của người bệnh thì để trống.\n- Thay đổi kích thước tối đa n ký tự."
+      ]
+    },
+    {
+      "code": "NGAY_SINH",
+      "type": "Chuỗi",
+      "maxlen": 12,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "GIOI_TINH",
+      "type": "Số",
+      "maxlen": 1,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "DIA_CHI",
+      "type": "Chuỗi",
+      "maxlen": 1024,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "MATINH_CU_TRU",
+      "type": "Chuỗi",
+      "maxlen": 3,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "MAHUYEN_CU_TRU",
+      "type": "Chuỗi",
+      "maxlen": 3,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "MAXA_CU_TRU",
+      "type": "Chuỗi",
+      "maxlen": 5,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "NGAYKD_HIV",
+      "type": "Chuỗi",
+      "maxlen": 8,
+      "required": "",
+      "notes": [
+        "Chuyển từ dạng số thành dạng chuỗi, max 8 ký tự"
+      ]
+    },
+    {
+      "code": "NOI_LAY_MAU_XN",
+      "type": "Chuỗi",
+      "maxlen": 5,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "NOI_XN_KD",
+      "type": "Chuỗi",
+      "maxlen": 5,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "NOI_BDDT_ARV",
+      "type": "Chuỗi",
+      "maxlen": 5,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "BDDT_ARV",
+      "type": "Chuỗi",
+      "maxlen": 8,
+      "required": "",
+      "notes": [
+        "Chuyển từ dạng số thành dạng chuỗi, max 8 ký tự"
+      ]
+    },
+    {
+      "code": "MA_PHAC_DO_DIEU_TRI_BD",
+      "type": "Chuỗi",
+      "maxlen": 200,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "MA_BAC_PHAC_DO_BD",
+      "type": "Số",
+      "maxlen": 1,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "MA_LYDO_DTRI",
+      "type": "Số",
+      "maxlen": 1,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "LOAI_DTRI_LAO",
+      "type": "Số",
+      "maxlen": 1,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "SANG_LOC_LAO",
+      "type": "Số",
+      "maxlen": 1,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "PHACDO_DTRI_LAO",
+      "type": "Số",
+      "maxlen": 2,
+      "required": "không bắt buộc khi LOAI_DTRI_LAO = 0 Còn lại là bắt buộc",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi mã phác đồ điều trị lao\n 1. Lao nhạy cảm thuốc:\n  + Mã \"1\": Phác đồ A1: 2HRZE/4RHE (phác đồ 06 tháng – điều trị lao cho người lớn)\n  + Mã \"2\": Phác đồ A2: 2HRZE/4RH (phác đồ 06 tháng – điều trị lao cho trẻ em )\n  + Mã \"3\": Phác đồ A1a: 2HPMZ/2HPM (phác đồ 4 tháng – điều trị lao cho người từ 12 tuổi trở lên) \n  + Mã \"4\": Phác đồ A2a: 2HRZE/2RH (phác đồ 4 tháng – điều trị lao cho trẻ em từ 3 tháng đến 16 tuổi) \n  + Mã \"5\": Phác đồ B1: 2HRZE/10RHE (phác đồ 12 tháng - điều trị lao cho người lớn)\n  + Mã \"6\": Phác đồ B2: 2HRZE/10RH (phác đồ 12 tháng – điều trị lao cho trẻ em)\n  + Mã \"7\": Phác đồ B2a: 6HRZEto (phác đồ 6 tháng – điều trị lao hệ thần kinh trung ương cho người từ 0 đến 19 tuổi)\n + Mã \"8\": Phác đồ cá thể \n 2. Lao Kháng thuốc\n + Mã \"9\": Phác đồ C1a: 4 Bdq[6]-Lfx(Mfx)-Pto-E-Z-Hh-Cfz / 5 Lfx-Cfz-Z-E ​(người lớn)\n + Mã G24\"10\": Phác đồ C1b: 4-6Bdq[6]-Lfx-Pto-E[2]-Z-Hh-Cfz / 5 Lfx-Cfz-Z (trẻ em)\n + Mã \"11\": Phác đồ C2a: 4-6 Bdq[6]- Lfx- Lzd [2]- E -Z-Hh- Cfz/ 5 Lfx/Mfx-Cfz-Z-E (người lớn)\n+ Mã \"12\": Phác đồ C2b: 4-6Bdq[6]-Lfx-Lzd[2]-E[2]-Z-Hh-Cfz / 5 Lfx-Cfz-Z (trẻ em)\n+ Mã \"13\": Phác đồ C3: 9-11 Bdq[6]-Lfx-Lzd-Cfz-(Z)\n + Mã \"14\": Phác đồ BPaL-M: 6 Bdq Pa Lzd Mfx​\n + Mã \"15\": Phác đồ BPaL: 6-9 Bdq Pa Lzd\n + Mã \"16\": Phác đồ D1: 20 Bdq [6] Lfx Lzd Cfz + 1 thuốc nhóm C\n + Mã \"17\": Phác đồ D2: 20 Lfx Lzd Cfz Cs +1 thuốc nhóm C \n + Mã \"18\": Phác đồ E: Bdq Lzd Cfz Cs +1 thuốc nhóm C ​hoặc thành phần được xác định bởi hội đồng Lâm sàng\n + Mã \"19\": Phác đồ cá thể khác\n 3. Lao tiềm ẩn\n + Mã \"20\": Phác đồ 6H/9H \n + Mã \"21\": Phác đồ 3RH\n + Mã \"22\": Phác đồ 3HP\n + Mã \"23\": Phác đồ 1HP\n + Mã \"24\": Phác đồ 4R\n +Mã \"25\": Phác đồ 6L\n+ Mã \"26\": Phác đồ INH\n+ Mã \"27\": Phác đồ khác"
+      ]
+    },
+    {
+      "code": "NGAYBD_DTRI_LAO",
+      "type": "Số",
+      "maxlen": 8,
+      "required": "không bắt buộc khi LOAI_DTRI_LAO = 0 còn lại là bắt buộc",
+      "notes": []
+    },
+    {
+      "code": "NGAYKT_DTRI_LAO",
+      "type": "Số",
+      "maxlen": 8,
+      "required": "không bắt buộc khi LOAI_DTRI_LAO = 0 còn lại là bắt buộc",
+      "notes": []
+    },
+    {
+      "code": "KQ_DTRI_LAO",
+      "type": "Số",
+      "maxlen": 1,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "MA_LYDO_XNTL_VR",
+      "type": "Số",
+      "maxlen": 1,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "NGAY_XN_TLVR",
+      "type": "Số",
+      "maxlen": 8,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "KQ_XNTL_VR",
+      "type": "Số",
+      "maxlen": 1,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "NGAY_KQ_XN_TLVR",
+      "type": "Số",
+      "maxlen": 8,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "MA_LOAI_BN",
+      "type": "Số",
+      "maxlen": 1,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "GIAI_DOAN_LAM_SANG",
+      "type": "Số",
+      "maxlen": 1,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "NHOM_DOI_TUONG",
+      "type": "Số",
+      "maxlen": 2,
+      "required": "x",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi mã nhóm đối tượng, trong đó:\n- Mã \"1\" Người sử dụng ma túy. \n- Mã \"2\" Người bán dâm, \n- Mã \"3\" Người có quan hệ tình dục đồng giới, \n- Mã \"4\"Người chuyển đổi giới tính, \n- Mã \"5\" Vợ, chồng và thành viên khác của gia đình cùng sống chung với người nhiễm HIV; vợ, chồng của đối tượng quy định tại các mục 1, 2, 3, 4, \n- Mã \"6\" Người có quan hệ tình dục với người nhiễm HIV, \n- Mã \"7\"Người mắc các bệnh lây truyền qua đường tình dục, \n- Mã \"8\" Phạm nhân, người bị tạm giam, trại viên cơ sở giáo dục bắt buộc, học sinh trường giáo dưỡng, học viên cơ sở cai nghiện ma túy, \n- Mã \"9\"Nhóm bệnh nhân Lao, \n- Mã \"10\"Người nghi ngờ AIDS\n- Mã \"11\" Đối tượng khác"
+      ]
+    },
+    {
+      "code": "MA_TINH_TRANG_DK",
+      "type": "Chuỗi",
+      "maxlen": 18,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "LAN_XN_PCR",
+      "type": "Số",
+      "maxlen": 1,
+      "required": "bắt buộc nếu MA_TINH_TRANG_DK =1",
+      "notes": []
+    },
+    {
+      "code": "NGAY_XN_PCR",
+      "type": "Số",
+      "maxlen": 8,
+      "required": "bắt buộc nếu MA_TINH_TRANG_DK =1",
+      "notes": []
+    },
+    {
+      "code": "NGAY_KQ_XN_PCR",
+      "type": "Số",
+      "maxlen": 8,
+      "required": "bắt buộc nếu MA_TINH_TRANG_DK =1",
+      "notes": []
+    },
+    {
+      "code": "MA_KQ_XN_PCR",
+      "type": "Số",
+      "maxlen": 1,
+      "required": "bắt buộc nếu MA_TINH_TRANG_DK =1",
+      "notes": []
+    },
+    {
+      "code": "NGAY_NHAN_TT_MANG_THAI",
+      "type": "Số",
+      "maxlen": 8,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "NGAY_BAT_DAU_DT_CTX",
+      "type": "Số",
+      "maxlen": 8,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "MA_XU_TRI",
+      "type": "Số",
+      "maxlen": 1,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "NGAY_BAT_DAU_XU_TRI",
+      "type": "Số",
+      "maxlen": 8,
+      "required": "bắt buộc khi MA_XU_TRI = 1",
+      "notes": []
+    },
+    {
+      "code": "NGAY_KET_THUC_XU_TRI",
+      "type": "Số",
+      "maxlen": 8,
+      "required": "bắt buộc khi MA_XU_TRI = 1",
+      "notes": []
+    },
+    {
+      "code": "MA_PHAC_DO_DIEU_TRI",
+      "type": "Chuỗi",
+      "maxlen": 200,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "MA_BAC_PHAC_DO",
+      "type": "Số",
+      "maxlen": 1,
+      "required": "bắt buộc trong trường hợp MA_PHAC_DO_DIEU_TRI = KHAC",
+      "notes": []
+    },
+    {
+      "code": "SO_NGAY_CAP_THUOC_ARV",
+      "type": "Số",
+      "maxlen": 3,
+      "required": "bắt buộc khi MA_XU_TRI = 1",
+      "notes": []
+    },
+    {
+      "code": "NGAY_CHUYEN_PHAC_DO",
+      "type": "Số",
+      "maxlen": 8,
+      "required": "",
+      "notes": [
+        "Bỏ bắt buộc"
+      ]
+    },
+    {
+      "code": "LY_DO_CHUYEN_PHAC_DO",
+      "type": "Số",
+      "maxlen": 1,
+      "required": "",
+      "notes": [
+        "Bỏ bắt buộc"
+      ]
+    },
+    {
+      "code": "MA_CSKCB",
+      "type": "Chuỗi",
+      "maxlen": 5,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "DU_PHONG",
+      "type": "Chuỗi",
+      "maxlen": null,
+      "required": "",
+      "notes": []
+    }
+  ],
+  "XML7": [
+    {
+      "code": "MA_LK",
+      "type": "Chuỗi",
+      "maxlen": 100,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "SO_LUU_TRU",
+      "type": "Chuỗi",
+      "maxlen": 200,
+      "required": "",
+      "notes": [
+        "Bỏ bắt buộc"
+      ]
+    },
+    {
+      "code": "MA_YTE",
+      "type": "Chuỗi",
+      "maxlen": 200,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "MA_KHOA_RV",
+      "type": "Chuỗi",
+      "maxlen": 200,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "NGAY_VAO",
+      "type": "Chuỗi",
+      "maxlen": 12,
+      "required": "x",
+      "notes": [
+        "Chuyển từ dạng Số thành dạng Chuỗi, max 12 ký tự"
+      ]
+    },
+    {
+      "code": "NGAY_RA",
+      "type": "Số",
+      "maxlen": 12,
+      "required": "x",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi thời điểm người bệnh kết thúc lần khám bệnh hoặc đợt điều trị tại cơ sở KBCB, gồm 12 ký tự theo định dạng yyyymmddHHMM.\nLưu ý: \n- Trường hợp điều trị ngoại trú thì ghi thời điểm kết thúc việc khám, chỉ định điều trị.\nBỏ phần lưu ý tại Quyết định số 130/QĐ-BYT"
+      ]
+    },
+    {
+      "code": "MA_DINH_CHI_THAI",
+      "type": "Số",
+      "maxlen": 1,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "NGUYENNHAN_DINHCHI",
+      "type": "Chuỗi",
+      "maxlen": null,
+      "required": "bắt buộc khi MA_DINH_CHI_THAI =1",
+      "notes": []
+    },
+    {
+      "code": "THOIGIAN_DINHCHI",
+      "type": "Chuỗi",
+      "maxlen": 12,
+      "required": "bắt buộc khi MA_DINH_CHI_THAI =1",
+      "notes": [
+        "Chuyển từ dạng Số thành dạng Chuỗi, max 12 ký tự"
+      ]
+    },
+    {
+      "code": "TUOI_THAI",
+      "type": "Số",
+      "maxlen": 2,
+      "required": "bắt buộc khi MA_DINH_CHI_THAI =1",
+      "notes": []
+    },
+    {
+      "code": "CHAN_DOAN_RV",
+      "type": "Chuỗi",
+      "maxlen": 1500,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "PP_DIEUTRI",
+      "type": "Chuỗi",
+      "maxlen": 1500,
+      "required": "x",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\n- Ghi phương pháp điều trị cho người bệnh như nội khoa, ngoại khoa, xạ trị, hoá trị hoặc xạ trị kết hợp nội khoa (xạ trị + nội khoa).\n- Tăng kích thước tối đa lên n ký tự."
+      ]
+    },
+    {
+      "code": "GHI_CHU",
+      "type": "Chuỗi",
+      "maxlen": 1500,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "MA_TTDV",
+      "type": "Chuỗi",
+      "maxlen": 255,
+      "required": "x",
+      "notes": [
+        "Bổ sung Mã vị trí = 4;5",
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi mã của người đứng đầu cơ sở KBCB hoặc người được người đứng đầu cơ sở KBCB ủy quyền được ký và đóng dấu của cơ sở KBCB đó (mã hoá theo số GPHN).\nTăng kích thước tối đa 255 ký tự.",
+        "- Đổi check từ MA_BHXH Sang check \nMACCHN trong DM_NHANVIENYTE\n-  Tăng kích thước tối đa \nlên  255 kí tự"
+      ]
+    },
+    {
+      "code": "MA_BS",
+      "type": "Chuỗi",
+      "maxlen": 255,
+      "required": "x",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi mã của Trưởng khoa hoặc Phó trưởng khoa được uỷ quyền ký tên theo quy định của Thủ trưởng cơ sở KBCB (mã hoá theo số GPHN).\nTăng kích thước tối đa 255 ký tự.",
+        "- Đổi check từ MA_BHXH Sang check \nMACCHN trong DM_NHANVIENYTE\n-  Tăng kích thước tối đa \nlên  255 kí tự"
+      ]
+    },
+    {
+      "code": "TEN_BS",
+      "type": "Chuỗi",
+      "maxlen": 255,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "NGAY_CT",
+      "type": "Chuỗi",
+      "maxlen": 8,
+      "required": "x",
+      "notes": [
+        "Chuyển từ dạng số sang dạng Chuỗi, max 8 ký tự"
+      ]
+    },
+    {
+      "code": "MA_CHA",
+      "type": "Chuỗi",
+      "maxlen": 10,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "MA_ME",
+      "type": "Chuỗi",
+      "maxlen": 10,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "MA_THE_TAM",
+      "type": "Chuỗi",
+      "maxlen": 15,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "HO_TEN_CHA",
+      "type": "Chuỗi",
+      "maxlen": 255,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "HO_TEN_ME",
+      "type": "Chuỗi",
+      "maxlen": 255,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "SO_NGAY_NGHI",
+      "type": "Số",
+      "maxlen": 3,
+      "required": "",
+      "notes": [
+        "<= NGOAITRU_DENNGAY -  NGOAITRU_TUNGAY + 1",
+        "Bổ sung: \nTăng kích thước tối đa lên 3 ký tự",
+        "SO_NGAY_NGHI tăng kích thước tối đa \nlên 3 ký tự: Giá trị được nhập từ 1-180"
+      ]
+    },
+    {
+      "code": "NGOAITRU_TUNGAY",
+      "type": "Số",
+      "maxlen": 8,
+      "required": "",
+      "notes": [
+        "= NGAY_RAVIEN hoặc NGAY_RAVIEN + 1"
+      ]
+    },
+    {
+      "code": "NGOAITRU_DENNGAY",
+      "type": "Số",
+      "maxlen": 8,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "DU_PHONG",
+      "type": "Chuỗi",
+      "maxlen": 4000,
+      "required": "",
+      "notes": [
+        "Thay đổi thành chuỗi n ký tự"
+      ]
+    }
+  ],
+  "XML8": [
+    {
+      "code": "MA_LK",
+      "type": "Chuỗi",
+      "maxlen": 100,
+      "required": "x",
+      "notes": [
+        "Bảng 8 chỉ có khi MA_LOAI_KCB ở XML1 in ('03','04','06';'09');"
+      ]
+    },
+    {
+      "code": "MA_LOAI_KCB",
+      "type": "Chuỗi",
+      "maxlen": 2,
+      "required": "x",
+      "notes": [
+        "Bổ sung các mã hình thức KBCB: \n- Mã \"05\": Điều trị ngoại trú các bệnh mạn tính dài ngày liên tục trong năm, áp dụng cho các bệnh theo danh mục ban hành kèm theo Thông tư số 46/2016/TT-BYT ngày 30/12/2016 của Bộ trưởng Bộ Y tế về ban hành danh mục bệnh cần chữa trị dài ngày, có khám bệnh và lĩnh thuốc và các văn bản có quy định, điều chỉnh, bổ sung;\n- Mã \"06\": Điều trị lưu tại Trạm Y tế tuyến xã, Phòng khám đa khoa khu vực;\n- Mã \"08\": Điều trị ngoại trú các bệnh mạn tính dài ngày liên tục trong năm, áp dụng cho các bệnh theo danh mục ban hành kèm theo Thông tư số 46/2016/TT-BYT, có khám bệnh, có thực hiện các dịch vụ kỹ thuật và/hoặc được sử dụng thuốc;\n- Mã \"09\": Điều trị nội trú dưới 04 (bốn) giờ."
+      ]
+    },
+    {
+      "code": "HO_TEN_CHA",
+      "type": "Chuỗi",
+      "maxlen": 255,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "HO_TEN_ME",
+      "type": "Chuỗi",
+      "maxlen": 255,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "NGUOI_GIAM_HO",
+      "type": "Chuỗi",
+      "maxlen": 255,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "DON_VI",
+      "type": "Chuỗi",
+      "maxlen": 1024,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "NGAY_VAO",
+      "type": "Số",
+      "maxlen": 12,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "NGAY_RA",
+      "type": "Số",
+      "maxlen": 12,
+      "required": "x",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi thời điểm người bệnh kết thúc lần khám bệnh hoặc đợt điều trị tại cơ sở KBCB, gồm 12 ký tự theo định dạng yyyymmddHHMM.\nLưu ý: \n- Trường hợp điều trị ngoại trú thì ghi thời điểm kết thúc việc khám, chỉ định điều trị.\nBỏ phần lưu ý tại Quyết định số 130/QĐ-BYT."
+      ]
+    },
+    {
+      "code": "CHAN_DOAN_VAO",
+      "type": "Chuỗi",
+      "maxlen": null,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "CHAN_DOAN_RV",
+      "type": "Chuỗi",
+      "maxlen": null,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "QT_BENHLY",
+      "type": "Chuỗi",
+      "maxlen": null,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "TOMTAT_KQ",
+      "type": "Chuỗi",
+      "maxlen": null,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "PP_DIEUTRI",
+      "type": "Chuỗi",
+      "maxlen": null,
+      "required": "x",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi phương pháp điều trị cho người bệnh như nội khoa, ngoại khoa, xạ trị, hoá trị hoặc xạ trị + nội khoa"
+      ]
+    },
+    {
+      "code": "NGAY_SINHCON",
+      "type": "Số",
+      "maxlen": 8,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "NGAY_CONCHET",
+      "type": "Số",
+      "maxlen": 8,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "SO_CONCHET",
+      "type": "Số",
+      "maxlen": 2,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "KET_QUA_DTRI",
+      "type": "Số",
+      "maxlen": 1,
+      "required": "x",
+      "notes": [
+        "Sửa đổi, bổ sung một số nội dung:\n- Mã \"5\": Tử vong tại cơ sở KBCB"
+      ]
+    },
+    {
+      "code": "GHI_CHU",
+      "type": "Chuỗi",
+      "maxlen": null,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "MA_TTDV",
+      "type": "Chuỗi",
+      "maxlen": 255,
+      "required": "x",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi mã của người đứng đầu cơ sở KBCB hoặc người được người đứng đầu cơ sở KBCB ủy quyền được ký và đóng dấu của cơ sở KBCB đó (mã hoá theo số GPHN).\nĐổi kiểu dữ liệu thành chuỗi và tăng kích thước tối đa 255 ký tự.",
+        "- Đổi check từ MA_BHXH Sang check \nMACCHN trong DM_NHANVIENYTE\n-  Tăng kích thước tối đa \nlên  255 kí tự"
+      ]
+    },
+    {
+      "code": "NGAY_CT",
+      "type": "Số",
+      "maxlen": 8,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "MA_THE_TAM",
+      "type": "Chuỗi",
+      "maxlen": 15,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "DU_PHONG",
+      "type": "Chuỗi",
+      "maxlen": null,
+      "required": "",
+      "notes": []
+    }
+  ],
+  "XML9": [
+    {
+      "code": "MA_LK",
+      "type": "Chuỗi",
+      "maxlen": 100,
+      "required": "x",
+      "notes": [
+        "Nếu CAN_NANG_CON có dữ liệu thì bắt buộc nhập dữ liệu bảng 9"
+      ]
+    },
+    {
+      "code": "MA_BHXH_NND",
+      "type": "Số",
+      "maxlen": 10,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "MA_THE_NND",
+      "type": "Chuỗi",
+      "maxlen": 15,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "HO_TEN_NND",
+      "type": "Chuỗi",
+      "maxlen": 255,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "NGAYSINH_NND",
+      "type": "Số",
+      "maxlen": 8,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "MA_DANTOC_NND",
+      "type": "Số",
+      "maxlen": 2,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "SO_CCCD_NND",
+      "type": "Chuỗi",
+      "maxlen": 15,
+      "required": "x",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\n- Ghi số căn cước công dân hoặc số định danh cá nhân trên thẻ căn cước của mẹ hoặc người nuôi dưỡng\n- Trường hợp người nuôi dưỡng là người nước ngoài thì ghi số hộ chiếu.\n- Thay đổi kích thước tối đa n ký tự"
+      ]
+    },
+    {
+      "code": "NGAYCAP_CCCD_NND",
+      "type": "Số",
+      "maxlen": 8,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "NOICAP_CCCD_NND",
+      "type": "Chuỗi",
+      "maxlen": 1024,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "NOI_CU_TRU_NND",
+      "type": "Chuỗi",
+      "maxlen": 1024,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "MA_QUOCTICH",
+      "type": "Số",
+      "maxlen": 3,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "MATINH_CU_TRU",
+      "type": "Chuỗi",
+      "maxlen": 3,
+      "required": "x",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nMã đơn vị hành chính cấp tỉnh nơi cư trú hiện tại của mẹ hoặc người nuôi dưỡng (thường trú hoặc tạm trú). Ghi theo 02 ký tự cuối của mã đơn vị hành chính của tỉnh, thành phố trực thuộc Trung ương nơi người bệnh cư trú (Quy định tại Phụ lục 1 Thông tư số 07/2016/TT-BCA ngày 01/02/2016 của Bộ trưởng Bộ Công an)."
+      ]
+    },
+    {
+      "code": "MAHUYEN_CU_TRU",
+      "type": "Chuỗi",
+      "maxlen": 3,
+      "required": "",
+      "notes": [
+        "Bỏ bắt buộc nhập",
+        "Sửa đổi toàn bộ nội dung diễn giải:\n'Mã đơn vị hành chính cấp huyện nơi cư trú hiện tại của mẹ hoặc người nuôi dưỡng (thường trú hoặc tạm trú). Ghi mã đơn vị hành chính cấp huyện theo Quyết định số 124/2004/QĐ-TTg ngày 08/7/2004 của Thủ tướng Chính phủ ban hành danh mục mã đơn vị hành chính, được cập nhật trên Cổng tiếp nhận dữ liệu thuộc Hệ thống thông tin giám định BHYT của BHXH Việt Nam.",
+        "MAHUYEN_CU_TRU  \n bỏ bắt buộc nhập"
+      ]
+    },
+    {
+      "code": "MAXA_CU_TRU",
+      "type": "Chuỗi",
+      "maxlen": 5,
+      "required": "",
+      "notes": [
+        "Bỏ bắt buộc nhập",
+        "Sửa đổi toàn bộ nội dung diễn giải:\nMã đơn vị hành chính cấp xã nơi cư trú hiện tại của mẹ hoặc người nuôi dưỡng (thường trú hoặc tạm trú). Ghi mã đơn vị hành chính cấp xã theo Quyết định số 124/2004/QĐ-TTg ngày 08/7/2004 của Thủ tướng Chính phủ ban hành danh mục mã đơn vị hành chính, được cập nhật trên Cổng tiếp nhận dữ liệu thuộc Hệ thống thông tin giám định BHYT của BHXH Việt Nam. Trường hợp xã chưa có mã đơn vị hành chính thì để trống."
+      ]
+    },
+    {
+      "code": "HO_TEN_CHA",
+      "type": "Chuỗi",
+      "maxlen": 255,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "MA_THE_TAM",
+      "type": "Chuỗi",
+      "maxlen": 15,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "HO_TEN_CON",
+      "type": "Chuỗi",
+      "maxlen": 255,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "GIOI_TINH_CON",
+      "type": "Số",
+      "maxlen": 1,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "SO_CON",
+      "type": "Số",
+      "maxlen": 2,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "LAN_SINH",
+      "type": "Số",
+      "maxlen": 2,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "SO_CON_SONG",
+      "type": "Số",
+      "maxlen": 2,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "CAN_NANG_CON",
+      "type": "Số",
+      "maxlen": 10,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "NGAY_SINH_CON",
+      "type": "Số",
+      "maxlen": 12,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "NOI_SINH_CON",
+      "type": "Chuỗi",
+      "maxlen": 1024,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "TINH_TRANG_CON",
+      "type": "Chuỗi",
+      "maxlen": null,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "SINHCON_PHAUTHUAT",
+      "type": "Chuỗi",
+      "maxlen": 1,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "SINHCON_DUOI32TUAN",
+      "type": "Chuỗi",
+      "maxlen": 1,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "GHI_CHU",
+      "type": "Chuỗi",
+      "maxlen": null,
+      "required": "",
+      "notes": [
+        "Bỏ bắt buộc"
+      ]
+    },
+    {
+      "code": "NGUOI_DO_DE",
+      "type": "Chuỗi",
+      "maxlen": 255,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "NGUOI_GHI_PHIEU",
+      "type": "Chuỗi",
+      "maxlen": 255,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "NGAY_CT",
+      "type": "Số",
+      "maxlen": 8,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "SO",
+      "type": "Chuỗi",
+      "maxlen": 200,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "QUYEN_SO",
+      "type": "Chuỗi",
+      "maxlen": 200,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "MA_TTDV",
+      "type": "Chuỗi",
+      "maxlen": 255,
+      "required": "x",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi mã của người đứng đầu cơ sở KBCB hoặc người được người đứng đầu cơ sở KBCB ủy quyền được ký để cấp giấy chứng sinh (mã hoá theo số GPHN).\nĐổi kiểu dữ liệu thành chuỗi và tăng kích thước tối đa 255 ký tự.",
+        "- Đổi check từ MA_BHXH Sang check \nMACCHN trong DM_NHANVIENYTE\n-  Tăng kích thước tối đa \nlên  255 kí tự"
+      ]
+    },
+    {
+      "code": "DU_PHONG",
+      "type": "Chuỗi",
+      "maxlen": 4000,
+      "required": "",
+      "notes": []
+    }
+  ],
+  "XML10": [
+    {
+      "code": "MA_LK",
+      "type": "Chuỗi",
+      "maxlen": 100,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "SO_SERI",
+      "type": "Chuỗi",
+      "maxlen": 200,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "SO_CT",
+      "type": "Chuỗi",
+      "maxlen": 200,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "SO_NGAY",
+      "type": "Số",
+      "maxlen": 3,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "DON_VI",
+      "type": "Chuỗi",
+      "maxlen": 1024,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "CHAN_DOAN_RV",
+      "type": "Chuỗi",
+      "maxlen": null,
+      "required": "x",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi cụm từ “dưỡng thai”."
+      ]
+    },
+    {
+      "code": "TU_NGAY",
+      "type": "Số",
+      "maxlen": 8,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "DEN_NGAY",
+      "type": "Số",
+      "maxlen": 8,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "MA_TTDV",
+      "type": "Chuỗi",
+      "maxlen": 255,
+      "required": "x",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi mã của người đứng đầu cơ sở KBCB hoặc người được người đứng đầu cơ sở KBCB ủy quyền được ký để cấp giấy chứng nhận nghỉ dưỡng thai (mã hoá theo số GPHN).\nĐổi kiểu dữ liệu thành chuỗi và tăng kích thước tối đa 255 ký tự.",
+        "- Đổi check từ MA_BHXH Sang check \nMACCHN trong DM_NHANVIENYTE\n-  Tăng kích thước tối đa \nlên  255 kí tự"
+      ]
+    },
+    {
+      "code": "TEN_BS",
+      "type": "Chuỗi",
+      "maxlen": 255,
+      "required": "x",
+      "notes": [
+        "'- Đổi check từ MA_BHXH Sang check \nMACCHN trong DM_NHANVIENYTE\n-  Tăng kích thước tối đa \nlên  255 kí tự"
+      ]
+    },
+    {
+      "code": "MA_BS",
+      "type": "Chuỗi",
+      "maxlen": 255,
+      "required": "x",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi mã của Trưởng khoa hoặc Trưởng phòng hoặc Phó trưởng khoa hoặc Phó trưởng phòng hoặc Bác sỹ hành nghề KBCB ký tên theo quy định của Thủ trưởng cơ sở KBCB (mã hoá theo số GPHN).\n Tăng kích thước tối đa 255 ký tự."
+      ]
+    },
+    {
+      "code": "NGAY_CT",
+      "type": "Số",
+      "maxlen": 8,
+      "required": "x",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi ngày cấp chứng từ (Giấy chứng nhận nghỉ dưỡng thai), theo định dạng yyyymmdd"
+      ]
+    },
+    {
+      "code": "DU_PHONG",
+      "type": "Chuỗi",
+      "maxlen": 4000,
+      "required": "",
+      "notes": []
+    }
+  ],
+  "XML11": [
+    {
+      "code": "MA_LK",
+      "type": "Chuỗi",
+      "maxlen": 100,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "SO_CT",
+      "type": "Chuỗi",
+      "maxlen": 200,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "SO_SERI",
+      "type": "Chuỗi",
+      "maxlen": 200,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "SO_KCB",
+      "type": "Chuỗi",
+      "maxlen": 200,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "DON_VI",
+      "type": "Chuỗi",
+      "maxlen": 1024,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "MA_BHXH",
+      "type": "Số",
+      "maxlen": 10,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "MA_THE_BHYT",
+      "type": "Chuỗi",
+      "maxlen": null,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "CHAN_DOAN_RV",
+      "type": "Chuỗi",
+      "maxlen": null,
+      "required": "x",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải::\nĐối với việc ghi chẩn đoán ra viện để phục vụ việc tạo lập giấy chứng nhận nghỉ việc hưởng bảo hiểm xã hội thì thực hiện theo hướng dẫn tại Thông tư số 18/2022/TT-BYT của Bộ trưởng Bộ Y tế, trong đó:\n- Nội dung chẩn đoán phải mô tả cụ thể về tình trạng sức khỏe hoặc ghi tên bệnh hoặc mã bệnh.\n- Trường hợp mắc bệnh cần chữa trị dài ngày thì ghi mã bệnh; trường hợp chưa có mã bệnh thì ghi đầy đủ tên bệnh. Việc ghi mã bệnh và tên bệnh thực hiện theo quy định tại Thông tư số 46/2016/TT-BYT ngày 30 tháng 12 năm 2016 của Bộ trưởng Bộ Y tế ban hành danh mục bệnh dài ngày;\n- Trường hợp điều trị dưỡng thai: Ghi rõ cụm từ “dưỡng thai”."
+      ]
+    },
+    {
+      "code": "PP_DIEUTRI",
+      "type": "Chuỗi",
+      "maxlen": null,
+      "required": "x",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi phương pháp điều trị cho người bệnh như nội khoa, ngoại khoa, xạ trị, hoá trị hoặc xạ trị + nội khoa"
+      ]
+    },
+    {
+      "code": "MA_DINH_CHI_THAI",
+      "type": "Chuỗi",
+      "maxlen": 1,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "NGUYENNHAN_DINHCHI",
+      "type": "Chuỗi",
+      "maxlen": null,
+      "required": "Bắt buộc ghi trường thông tin này khi MA_DINH_CHI_THAI là mã \"1\".",
+      "notes": []
+    },
+    {
+      "code": "TUOI_THAI",
+      "type": "Số",
+      "maxlen": 2,
+      "required": "Bắt buộc ghi trường thông tin này khi MA_DINH_CHI_THAI là mã \"1\".",
+      "notes": []
+    },
+    {
+      "code": "SO_NGAY_NGHI",
+      "type": "Số",
+      "maxlen": 3,
+      "required": "x",
+      "notes": [
+        "SO_NGAY <= DEN_NGAY - TU_NGAY +1"
+      ]
+    },
+    {
+      "code": "TU_NGAY",
+      "type": "Số",
+      "maxlen": 8,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "DEN_NGAY",
+      "type": "Số",
+      "maxlen": 8,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "HO_TEN_CHA",
+      "type": "Chuỗi",
+      "maxlen": 255,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "HO_TEN_ME",
+      "type": "Chuỗi",
+      "maxlen": 255,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "MA_TTDV",
+      "type": "Chuỗi",
+      "maxlen": 255,
+      "required": "x",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi mã của người đứng đầu cơ sở KBCB hoặc người được người đứng đầu cơ sở KBCB ủy quyền được ký để cấp giấy chứng nhận nghỉ hưởng BHXH (mã hoá theo số GPHN).\nĐổi kiểu dữ liệu thành chuỗi và tăng kích thước tối đa 255 ký tự.",
+        "- Đổi check từ MA_BHXH Sang check \nMACCHN trong DM_NHANVIENYTE\n-  Tăng kích thước tối đa \nlên  255 kí tự"
+      ]
+    },
+    {
+      "code": "MA_BS",
+      "type": "Chuỗi",
+      "maxlen": 255,
+      "required": "x",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi mã của Trưởng khoa hoặc Trưởng phòng hoặc Phó trưởng khoa hoặc Phó trưởng phòng hoặc Bác sỹ hành nghề KBCB ký tên theo quy định của Thủ trưởng cơ sở KBCB (mã hóa theo số GPHN).\nTăng kích thước tối đa 255 ký tự.",
+        "- Đổi check từ MA_BHXH Sang check \nMACCHN trong DM_NHANVIENYTE\n-  Tăng kích thước tối đa \nlên  255 kí tự"
+      ]
+    },
+    {
+      "code": "NGAY_CT",
+      "type": "Số",
+      "maxlen": 8,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "MA_THE_TAM",
+      "type": "Chuỗi",
+      "maxlen": 15,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "MAU_SO",
+      "type": "Chuỗi",
+      "maxlen": 5,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "DU_PHONG",
+      "type": "Chuỗi",
+      "maxlen": 4000,
+      "required": "",
+      "notes": []
+    }
+  ],
+  "XML12": [
+    {
+      "code": "NGUOI_CHU_TRI",
+      "type": "Chuỗi",
+      "maxlen": 255,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "CHUC_VU",
+      "type": "Số",
+      "maxlen": 1,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "NGAY_HOP",
+      "type": "Số",
+      "maxlen": 8,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "HO_TEN",
+      "type": "Chuỗi",
+      "maxlen": 255,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "NGAY_SINH",
+      "type": "Số",
+      "maxlen": 8,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "SO_CCCD",
+      "type": "Chuỗi",
+      "maxlen": 15,
+      "required": "x",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\n- Ghi số định danh cá nhân trên thẻ căn cước hoặc căn cước công dân hoặc giấy chứng nhận căn cước hoặc giấy khai sinh của người được giám định y khoa. \n- Trường hợp người được giám định y khoa là người nước ngoài thì ghi số hộ chiếu.\n- Trường hợp bất khả kháng như trẻ sơ sinh hoặc người mất ý thức, tâm thần không thể lấy được thông tin số định danh cá nhân thì để trống.\n- Thay đổi kích thước tối đa n ký tự"
+      ]
+    },
+    {
+      "code": "NGAY_CAP_CCCD",
+      "type": "Số",
+      "maxlen": 8,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "NOI_CAP_CCCD",
+      "type": "Chuỗi",
+      "maxlen": 1024,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "DIA_CHI",
+      "type": "Chuỗi",
+      "maxlen": 1024,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "MATINH_CU_TRU",
+      "type": "Chuỗi",
+      "maxlen": 3,
+      "required": "x",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nMã đơn vị hành chính cấp tỉnh nơi người bệnh đang cư trú (thường trú hoặc tạm trú). Ghi theo 02 ký tự cuối của mã đơn vị hành chính của tỉnh, thành phố trực thuộc Trung ương nơi người bệnh cư trú (Quy định tại Phụ lục 1 Thông tư số 07/2016/TT-BCA ngày 01/02/2016 của Bộ trưởng Bộ Công an)."
+      ]
+    },
+    {
+      "code": "MAHUYEN_CU_TRU",
+      "type": "Chuỗi",
+      "maxlen": 3,
+      "required": "x",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nMã đơn vị hành chính cấp huyện nơi người bệnh đang cư trú (thường trú hoặc tạm trú). Ghi mã đơn vị hành chính cấp huyện theo Quyết định số 124/2004/QĐ-TTg ngày 08/7/2004 của Thủ tướng Chính phủ ban hành danh mục mã đơn vị hành chính, được cập nhật trên Cổng tiếp nhận dữ liệu thuộc Hệ thống thông tin giám định BHYT của BHXH Việt Nam."
+      ]
+    },
+    {
+      "code": "MAXA_CU_TRU",
+      "type": "Chuỗi",
+      "maxlen": 5,
+      "required": "x",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nMã đơn vị hành chính cấp xã nơi người bệnh đang cư trú (thường trú hoặc tạm trú). Ghi mã đơn vị hành chính cấp xã theo Quyết định số 124/2004/QĐ-TTg ngày 08/7/2004 của Thủ tướng Chính phủ ban hành danh mục mã đơn vị hành chính, được cập nhật trên Cổng tiếp nhận dữ liệu thuộc Hệ thống thông tin giám định BHYT của BHXH Việt Nam. Trường hợp xã chưa có mã đơn vị hành chính thì để trống."
+      ]
+    },
+    {
+      "code": "MA_BHXH",
+      "type": "Số",
+      "maxlen": 10,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "MA_THE_BHYT",
+      "type": "Chuỗi",
+      "maxlen": 15,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "NGHE_NGHIEP",
+      "type": "Chuỗi",
+      "maxlen": 100,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "DIEN_THOAI",
+      "type": "Chuỗi",
+      "maxlen": 15,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "MA_DOI_TUONG",
+      "type": "Chuỗi",
+      "maxlen": 20,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "KHAM_GIAM_DINH",
+      "type": "Số",
+      "maxlen": 1,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "SO_BIEN_BAN",
+      "type": "Chuỗi",
+      "maxlen": 200,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "TYLE_TTCT_CU",
+      "type": "Số",
+      "maxlen": 3,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "DANG_HUONG_CHE_DO",
+      "type": "Chuỗi",
+      "maxlen": 3,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "NGAY_CHUNG_TU",
+      "type": "Số",
+      "maxlen": 8,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "SO_GIAY_GIOI_THIEU",
+      "type": "Chuỗi",
+      "maxlen": 200,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "NGAY_DE_NGHI",
+      "type": "Số",
+      "maxlen": 8,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "MA_DONVI",
+      "type": "Chuỗi",
+      "maxlen": 200,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "GIOI_THIEU_CUA",
+      "type": "Chuỗi",
+      "maxlen": 1024,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "KET_QUA_KHAM",
+      "type": "Chuỗi",
+      "maxlen": null,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "SO_VAN_BAN_CAN_CU",
+      "type": "Chuỗi",
+      "maxlen": 200,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "TYLE_TTCT_MOI",
+      "type": "Số",
+      "maxlen": 3,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "TONG_TYLE_TTCT",
+      "type": "Số",
+      "maxlen": 3,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "DANG_KHUYETTAT",
+      "type": "Số",
+      "maxlen": 1,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "MUC_DO_KHUYETTAT",
+      "type": "Số",
+      "maxlen": 1,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "DE_NGHI",
+      "type": "Chuỗi",
+      "maxlen": null,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "DUOC_XACDINH",
+      "type": "Chuỗi",
+      "maxlen": null,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "DU_PHONG",
+      "type": "Chuỗi",
+      "maxlen": null,
+      "required": "",
+      "notes": []
+    }
+  ],
+  "XML13": [
+    {
+      "code": "MA_LK",
+      "type": "Chuỗi",
+      "maxlen": 250,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "SO_HOSO",
+      "type": "Chuỗi",
+      "maxlen": 100,
+      "required": "x",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi số hồ sơ giấy chuyển tuyến KBCB BHYT/giấy chuyển cơ sở KBCB do cơ sở KBCB quy định theo mẫu số 6 của Phụ lục ban hành kèm theo Nghị định 75/2023/NĐ-CP của Chính phủ."
+      ]
+    },
+    {
+      "code": "SO_CHUYENTUYEN",
+      "type": "Chuỗi",
+      "maxlen": 100,
+      "required": "x",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi số của sổ chuyển tuyến/chuyển cơ sở KBCB do cơ sở KBCB quy định theo mẫu số 6 của Phụ lục ban hành kèm theo Nghị định 75/2023/NĐ-CP của Chính phủ."
+      ]
+    },
+    {
+      "code": "GIAY_CHUYEN_TUYEN",
+      "type": "Chuỗi",
+      "maxlen": 100,
+      "required": "x",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi số giấy chuyển tuyến/chuyển cơ sở KBCB do cơ sở KBCB cấp theo mẫu số 6 của Phụ lục ban hành kèm theo Nghị định 75/2023/NĐ-CP của Chính phủ."
+      ]
+    },
+    {
+      "code": "MA_CSKCB",
+      "type": "Chuỗi",
+      "maxlen": 5,
+      "required": "",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi mã cơ sở KBCB nơi cấp giấy chuyển tuyến/giấy chuyển cơ sở KBCB"
+      ]
+    },
+    {
+      "code": "MA_CSKCB_DI",
+      "type": "Chuỗi",
+      "maxlen": 100,
+      "required": "",
+      "notes": [
+        "Sửa đổi tên trường: \nMA_CSKCB_DI\nGhi tương tự hướng dẫn tại trường MA_NOI_DI tại Bảng 1, trường hợp người bệnh được chuyển từ nhiều cơ sở KCB đến thì ghi lần lượt mã của từng cơ sở KCB, cách nhau bằng dấu chấm phẩy (;). Tăng kích thước tối đa lên 100 ký tự.",
+        "Insert vào trường MA_NOI_DI"
+      ]
+    },
+    {
+      "code": "MA_CSKCB_DEN",
+      "type": "Chuỗi",
+      "maxlen": 5,
+      "required": "",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nĐổi tên trường: MA_CSKCB_DEN. Ghi theo hướng dẫn trường MA_NOI_DEN tại Bảng 1",
+        "Insert vào trường MA_NOI_DEN"
+      ]
+    },
+    {
+      "code": "HO_TEN",
+      "type": "Chuỗi",
+      "maxlen": 255,
+      "required": "x",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi họ và tên của người bệnh được chuyển tuyến/chuyển cơ sở KBCB"
+      ]
+    },
+    {
+      "code": "NGAY_SINH",
+      "type": "Số",
+      "maxlen": 12,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "GIOI_TINH",
+      "type": "Số",
+      "maxlen": 1,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "MA_QUOCTICH",
+      "type": "Chuỗi",
+      "maxlen": 3,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "MA_DANTOC",
+      "type": "Chuỗi",
+      "maxlen": 2,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "MA_NGHE_NGHIEP",
+      "type": "Chuỗi",
+      "maxlen": 5,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "DIA_CHI",
+      "type": "Chuỗi",
+      "maxlen": 1024,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "MA_THE_BHYT",
+      "type": "Chuỗi",
+      "maxlen": 200,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "GT_THE_DEN",
+      "type": "Chuỗi",
+      "maxlen": 200,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "NGAY_VAO",
+      "type": "Số",
+      "maxlen": 12,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "NGAY_VAO_NOI_TRU",
+      "type": "Số",
+      "maxlen": 12,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "NGAY_RA",
+      "type": "Số",
+      "maxlen": 12,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "DAU_HIEU_LS",
+      "type": "Chuỗi",
+      "maxlen": 4000,
+      "required": "x",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi các dấu hiệu lâm sàng của người bệnh khi chuyển tuyến/chuyển cơ sở KBCB"
+      ]
+    },
+    {
+      "code": "CHAN_DOAN_RV",
+      "type": "Chuỗi",
+      "maxlen": 4000,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "QT_BENHLY",
+      "type": "Chuỗi",
+      "maxlen": 4000,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "TOMTAT_KQ",
+      "type": "Chuỗi",
+      "maxlen": 4000,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "PP_DIEUTRI",
+      "type": "Chuỗi",
+      "maxlen": 4000,
+      "required": "",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi phương pháp, thủ thuật, kỹ thuật, thuốc đã sử dụng trong điều trị cho người bệnh"
+      ]
+    },
+    {
+      "code": "MA_BENH_CHINH",
+      "type": "Chuỗi",
+      "maxlen": 50,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "MA_BENH_KT",
+      "type": "Chuỗi",
+      "maxlen": 200,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "MA_BENH_YHCT",
+      "type": "Chuỗi",
+      "maxlen": 255,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "TINH_TRANG_CT",
+      "type": "Chuỗi",
+      "maxlen": 4000,
+      "required": "",
+      "notes": [
+        "Sửa đổi tên trường: TINH_TRANG_CT \nGhi tình trạng người bệnh tại thời điểm chuyển tuyến/chuyển cơ sở KBCB.",
+        "insert vào trường PP_DIEUTRI"
+      ]
+    },
+    {
+      "code": "MA_LOAI_RV",
+      "type": "Số",
+      "maxlen": 1,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "MA_LYDO_CT",
+      "type": "Số",
+      "maxlen": 1,
+      "required": "x",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi mã lý do chuyển tuyến/chuyển cơ sở KBCB. Ghi mã 1 trong trường hợp đủ điều kiện chuyển tuyến/chuyển cơ sở KBCB phù hợp với quy định chuyển tuyến/chuyển cơ sở KBCB; Ghi mã 2 trong trường hợp đủ điều kiện chuyển tuyến/chuyển cơ sở KBCB do không phù hợp với khả năng đáp ứng của cơ sở KBCB; Ghi mã 3 trong trường hợp chuyển tuyến/chuyển cơ sở KBCB theo yêu cầu của người bệnh hoặc người đại diện hợp pháp của người bệnh."
+      ]
+    },
+    {
+      "code": "HUONG_DIEU_TRI",
+      "type": "Chuỗi",
+      "maxlen": 4000,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "PHUONGTIEN_VC",
+      "type": "Chuỗi",
+      "maxlen": 255,
+      "required": "x",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi phương tiện vận chuyển người bệnh khi thực hiện chuyển tuyến/chuyển cơ sở KBCB"
+      ]
+    },
+    {
+      "code": "HOTEN_NGUOI_HT",
+      "type": "Chuỗi",
+      "maxlen": 255,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "CHUCDANH_NGUOI_HT",
+      "type": "Chuỗi",
+      "maxlen": 255,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "MA_BAC_SI",
+      "type": "Chuỗi",
+      "maxlen": 255,
+      "required": "x",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi mã người hành nghề chỉ định chuyển tuyến/chuyển cơ sở KBCB (mã hóa theo số GPHN)\nLưu ý: Trường hợp người hành nghề được huy động, điều động tham gia phòng, chống dịch hoặc thiên tai, thảm họa tại cơ sở KBCB khác, mã hoá theo nguyên tắc: MA_BAC_SI.HD.XXXXX, trong đó MA_BAC_SI ghi theo số GPHN của người hành nghề được điều động, XXXXX là mã cơ sở KCB nơi cử người hành nghề đi; trường hợp người hành nghề không đăng ký hành nghề nhưng được huy động thì XXXXX ghi 2 ký tự đầu là mã tỉnh nơi ra quyết định huy động, 3 ký tự sau ghi XXX."
+      ]
+    },
+    {
+      "code": "MA_TTDV",
+      "type": "Chuỗi",
+      "maxlen": 255,
+      "required": "x",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi mã của người đứng đầu cơ sở KBCB hoặc người được người đứng đầu cơ sở KBCB ủy quyền được ký giấy chuyển tuyến KBCB BHYT/chuyển cơ sở KBCB (mã hoá theo số GPHN). Trường hợp không có GPHN thì ghi số căn cước công dân hoặc số định danh cá nhân.\nĐổi kiểu dữ liệu thành chuỗi và tăng kích thước tối đa 255 ký tự.",
+        "Tăng kích thước tối đa 255 ký tự"
+      ]
+    },
+    {
+      "code": "DU_PHONG",
+      "type": "Chuỗi",
+      "maxlen": 4000,
+      "required": "",
+      "notes": [
+        "Bổ sung:\nGhi dữ liệu chữ ký số của cơ sở KBCB."
+      ]
+    }
+  ],
+  "XML14": [
+    {
+      "code": "MA_LK",
+      "type": "Chuỗi",
+      "maxlen": 200,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "SO_GIAYHEN_KL",
+      "type": "Chuỗi",
+      "maxlen": 100,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "MA_CSKCB",
+      "type": "Chuỗi",
+      "maxlen": 5,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "HO_TEN",
+      "type": "Chuỗi",
+      "maxlen": 255,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "NGAY_SINH",
+      "type": "Số",
+      "maxlen": 12,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "GIOI_TINH",
+      "type": "Số",
+      "maxlen": 1,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "DIA_CHI",
+      "type": "Chuỗi",
+      "maxlen": 1024,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "MA_THE_BHYT",
+      "type": "Chuỗi",
+      "maxlen": 200,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "GT_THE_DEN",
+      "type": "Chuỗi",
+      "maxlen": 200,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "NGAY_VAO",
+      "type": "Số",
+      "maxlen": 12,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "NGAY_VAO_NOI_TRU",
+      "type": "Số",
+      "maxlen": 12,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "NGAY_RA",
+      "type": "Số",
+      "maxlen": 12,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "NGAY_HEN_KL",
+      "type": "Số",
+      "maxlen": 8,
+      "required": "x",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi thời điểm người bệnh được hẹn khám lại, gồm 08 ký tự theo định dạng yyyymmdd",
+        "8 ký tự số định dạng YYYYMMDD"
+      ]
+    },
+    {
+      "code": "CHAN_DOAN_RV",
+      "type": "Chuỗi",
+      "maxlen": 4000,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "MA_BENH_CHINH",
+      "type": "Chuỗi",
+      "maxlen": 50,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "MA_BENH_KT",
+      "type": "Chuỗi",
+      "maxlen": 200,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "MA_BENH_YHCT",
+      "type": "Chuỗi",
+      "maxlen": 255,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "MA_DOITUONG_KCB",
+      "type": "Chuỗi",
+      "maxlen": 4,
+      "required": "",
+      "notes": [
+        "Kích thước tối đa 4"
+      ]
+    },
+    {
+      "code": "MA_BAC_SI",
+      "type": "Chuỗi",
+      "maxlen": 255,
+      "required": "x",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi mã người hành nghề chỉ định người bệnh khám lại (mã hóa theo số GPHN)\nLưu ý: Trường hợp người hành nghề được huy động, điều động tham gia phòng, chống dịch hoặc thiên tai, thảm họa tại cơ sở KBCB khác, mã hoá theo nguyên tắc: MA_BAC_SI.HD.XXXXX, trong đó MA_BAC_SI ghi theo số GPHN của người hành nghề được điều động, XXXXX là mã cơ sở KCB nơi cử người hành nghề đi; trường hợp người hành nghề không đăng ký hành nghề nhưng được huy động thì XXXXX ghi 2 ký tự đầu là mã tỉnh nơi ra quyết định huy động, 3 ký tự sau ghi XXX."
+      ]
+    },
+    {
+      "code": "MA_TTDV",
+      "type": "Chuỗi",
+      "maxlen": 255,
+      "required": "x",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi mã của người đứng đầu cơ sở KBCB hoặc người được người đứng đầu cơ sở KBCB ủy quyền được ký giấy hẹn khám lại (mã hoá theo số GPHN). Trường hợp không có GPHN thì ghi số căn cước công dân hoặc số định danh cá nhân.\nĐổi kiểu dữ liệu thành chuỗi và tăng kích thước tối đa 255 ký tự.",
+        "- Đổi check từ MA_BHXH Sang check \nMACCHN trong DM_NHANVIENYTE\n-  Tăng kích thước tối đa \nlên  255 kí tự"
+      ]
+    },
+    {
+      "code": "NGAY_CT",
+      "type": "Số",
+      "maxlen": 8,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "DU_PHONG",
+      "type": "Chuỗi",
+      "maxlen": null,
+      "required": "",
+      "notes": [
+        "Bổ sung:\nGhi dữ liệu chữ ký số của cơ sở KBCB."
+      ]
+    }
+  ],
+  "XML15": [
+    {
+      "code": "MA_LK",
+      "type": "Chuỗi",
+      "maxlen": 200,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "STT",
+      "type": "Số",
+      "maxlen": 10,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "MA_BN",
+      "type": "Chuỗi",
+      "maxlen": 200,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "HO_TEN",
+      "type": "Chuỗi",
+      "maxlen": 255,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "SO_CCCD",
+      "type": "Chuỗi",
+      "maxlen": 15,
+      "required": "",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\n- Ghi số căn cước công dân hoặc số định danh cá nhân trên thẻ căn cước hoặc giấy chứng nhận căn cước hoặc giấy khai sinh của người bệnh. \n- Trường hợp người bệnh là người nước ngoài thì ghi số hộ chiếu.\n- Trường hợp bất khả kháng như trẻ sơ sinh hoặc người bệnh mất ý thức, tâm thần không thể lấy được thông tin số định danh cá nhân của người bệnh thì để trống.\n- Thay đổi kích thước tối đa n ký tự",
+        "SO_CCCD phải khớp với SO_CCCD ở bảng XML1_9324"
+      ]
+    },
+    {
+      "code": "PHANLOAI_LAO_VITRI",
+      "type": "Số",
+      "maxlen": 1,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "PHANLOAI_LAO_TS",
+      "type": "Số",
+      "maxlen": 1,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "PHANLOAI_LAO_HIV",
+      "type": "Số",
+      "maxlen": 1,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "PHANLOAI_LAO_VK",
+      "type": "Số",
+      "maxlen": 1,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "PHANLOAI_LAO_KT",
+      "type": "Số",
+      "maxlen": 1,
+      "required": "",
+      "notes": [
+        "Bỏ bắt buộc"
+      ]
+    },
+    {
+      "code": "LOAI_DTRI_LAO",
+      "type": "Số",
+      "maxlen": 1,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "NGAYBD_DTRI_LAO",
+      "type": "Số",
+      "maxlen": 8,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "PHACDO_DTRI_LAO",
+      "type": "Số",
+      "maxlen": 2,
+      "required": "x",
+      "notes": [
+        "Sửa đổi toàn bộ nội dung diễn giải:\nGhi mã phác đồ điều trị lao\n 1. Lao nhạy cảm thuốc:\n  + Mã \"1\": Phác đồ A1: 2HRZE/4RHE (phác đồ 06 tháng – điều trị lao cho người lớn)\n  + Mã \"2\": Phác đồ A2: 2HRZE/4RH (phác đồ 06 tháng – điều trị lao cho trẻ em )\n  + Mã \"3\": Phác đồ A1a: 2HPMZ/2HPM (phác đồ 4 tháng – điều trị lao cho người từ 12 tuổi trở lên) \n  + Mã \"4\": Phác đồ A2a: 2HRZE/2RH (phác đồ 4 tháng – điều trị lao cho trẻ em từ 3 tháng đến 16 tuổi) \n  + Mã \"5\": Phác đồ B1: 2HRZE/10RHE (phác đồ 12 tháng - điều trị lao cho người lớn)\n  + Mã \"6\": Phác đồ B2: 2HRZE/10RH (phác đồ 12 tháng – điều trị lao cho trẻ em)\n  + Mã \"7\": Phác đồ B2a: 6HRZEto (phác đồ 6 tháng – điều trị lao hệ thần kinh trung ương cho người từ 0 đến 19 tuổi)\n + Mã \"8\": Phác đồ cá thể \n 2. Lao Kháng thuốc\n + Mã \"9\": Phác đồ C1a: 4 Bdq[6]-Lfx(Mfx)-Pto-E-Z-Hh-Cfz / 5 Lfx-Cfz-Z-E ​(người lớn)\n + Mã \"10\": Phác đồ C1b: 4-6Bdq[6]-Lfx-Pto-E[2]-Z-Hh-Cfz / 5 Lfx-Cfz-Z (trẻ em)\n + Mã \"11\": Phác đồ C2a: 4-6 Bdq[6]- Lfx- Lzd [2]- E -Z-Hh- Cfz/ 5 Lfx/Mfx-Cfz-Z-E (người lớn)\n+ Mã \"12\": Phác đồ C2b: 4-6Bdq[6]-Lfx-Lzd[2]-E[2]-Z-Hh-Cfz / 5 Lfx-Cfz-Z (trẻ em)\n+ Mã \"13\": Phác đồ C3: 9-11 Bdq[6]-Lfx-Lzd-Cfz-(Z)\n + Mã \"14\": Phác đồ BPaL-M: 6 Bdq Pa Lzd Mfx​\n + Mã \"15\": Phác đồ BPaL: 6-9 Bdq Pa Lzd\n + Mã \"16\": Phác đồ D1: 20 Bdq [6] Lfx Lzd Cfz + 1 thuốc nhóm C\n + Mã \"17\": Phác đồ D2: 20 Lfx Lzd Cfz Cs +1 thuốc nhóm C \n + Mã \"18\": Phác đồ E: Bdq Lzd Cfz Cs +1 thuốc nhóm C ​hoặc thành phần được xác định bởi hội đồng Lâm sàng\n + Mã \"19\": Phác đồ cá thể khác\n 3. Lao tiềm ẩn\n + Mã \"20\": Phác đồ 6H/9H \n + Mã \"21\": Phác đồ 3RH\n + Mã \"22\": Phác đồ 3HP\n + Mã \"23\": Phác đồ 1HP\n + Mã \"24\": Phác đồ 4R\n +Mã \"25\": Phác đồ 6L\n+ Mã \"26\": Phác đồ INH\n+ Mã \"27\": Phác đồ khác"
+      ]
+    },
+    {
+      "code": "NGAYKT_DTRI_LAO",
+      "type": "Số",
+      "maxlen": 8,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "KET_QUA_DTRI_LAO",
+      "type": "Số",
+      "maxlen": 1,
+      "required": "x",
+      "notes": []
+    },
+    {
+      "code": "MA_CSKCB",
+      "type": "Chuỗi",
+      "maxlen": 5,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "NGAYKD_HIV",
+      "type": "Số",
+      "maxlen": 8,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "BDDT_ARV",
+      "type": "Số",
+      "maxlen": 8,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "NGAY_BAT_DAU_DT_CTX",
+      "type": "Số",
+      "maxlen": 8,
+      "required": "",
+      "notes": []
+    },
+    {
+      "code": "DU_PHONG",
+      "type": "Chuỗi",
+      "maxlen": 40000,
+      "required": "",
+      "notes": [
+        "Bổ sung:\nGhi dữ liệu chữ ký số của cơ sở KBCB."
+      ]
+    }
+  ]
+}

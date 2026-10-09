@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+reports/
+XML_Error/*
+!XML_Error/.gitkeep
+XML_pre_Base64/*
+!XML_pre_Base64/.gitkeep
